@@ -195,8 +195,12 @@ window.CV = {
       nombre: 'Bot de productos para Shopify',
       etiqueta: 'Bot + e-commerce',
       texto:
-        'Bot de Telegram que carga productos a la tienda Shopify: arma el borrador con título, precio, recargo y foto, ' +
-        'y con un botón lo publica en la tienda online y en Instagram. Incluye importador de catálogo y SEO local.',
+        'Carga productos a una tienda online sin tipear nada. Copiás el link de un producto de otra página ' +
+        '(Mercado Libre, INGCO, Würth y otras) y se lo mandás al bot por Telegram. El bot entra a esa página y saca ' +
+        'la foto, el título, la descripción y el precio: reescribe la descripción en español, le quita los códigos internos ' +
+        'y, si el precio está en dólares u otra moneda, lo pasa a pesos uruguayos con la cotización del día y le suma tu recargo. ' +
+        'Te muestra todo para revisar y corregir, lo guarda como borrador en Shopify y lo publica en la tienda ' +
+        '(y en Instagram) solo cuando lo confirmás.',
       stack: ['Python', 'Telegram Bot API', 'Shopify API', 'Instagram'],
       imagenes: [['img/app/bot-productos-shopify.webp', 419, 858]],
     },

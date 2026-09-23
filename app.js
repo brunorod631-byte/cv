@@ -227,6 +227,5 @@
     $('contacto-grid').append(a);
   }
 
-  for (const cr of cv.creditos) $('creditos').append(el('li', { text: cr }));
   $('anio').textContent = new Date().getFullYear();
 })();

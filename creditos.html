@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Créditos · Bruno Rodríguez</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0e1116" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=19" />
+  <script src="data.js?v=19" defer></script>
+</head>
+<body>
+  <main class="wrap pie" style="border-top: 0; font-size: 14px;">
+    <p><a href="./">← Volver</a></p>
+    <h1 style="font-size: 20px; color: var(--texto, #fff);">Créditos</h1>
+    <p>Modelos 3D de terceros usados en las demos de Realidad Aumentada:</p>
+    <ul id="creditos"></ul>
+  </main>
+  <script>
+    addEventListener('DOMContentLoaded', () => {
+      for (const cr of window.CV.creditos) {
+        const li = document.createElement('li');
+        li.textContent = cr;
+        document.getElementById('creditos').append(li);
+      }
+    });
+  </script>
+</body>
+</html>

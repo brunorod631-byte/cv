@@ -252,6 +252,7 @@ body.con-intro { overflow: hidden; }
 
 .pie { padding-top: 24px; padding-bottom: 40px; border-top: 1px solid var(--borde); color: var(--suave); font-size: 12px; }
 .pie ul { padding-left: 18px; margin: 6px 0 12px; }
+.pie a { color: inherit; }
 
 @media (min-width: 820px) {
   .ra-panel { grid-template-columns: 1.4fr 1fr; }

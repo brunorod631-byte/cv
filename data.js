@@ -62,10 +62,12 @@ window.CV = {
       boton: 'Ver en mi casa',
       tamanoReal: true,
       modelos: [
+        { nombre: 'Heladera doble puerta', src: 'models/heladera.glb', alt: 'Heladera doble puerta en 3D', scale: '0.92 0.92 0.92', orbit: '20deg 75deg auto' },
         { nombre: 'Lavarropas', src: 'models/lavarropas.glb', alt: 'Lavarropas en 3D', scale: '0.0357 0.0357 0.0357', orbit: '20deg 75deg auto' },
         { nombre: 'Microondas', src: 'models/microondas.glb', alt: 'Microondas en 3D', scale: '0.00909 0.00909 0.00909', orbit: '15deg 75deg auto' },
         { nombre: 'Smart TV 55"', src: 'models/tv-led.glb', alt: 'Televisor LED de 55 pulgadas en 3D', scale: '0.0946 0.0946 0.0946', orbit: '20deg 80deg auto' },
         { nombre: 'Aire acondicionado split', src: 'models/aire-split.glb', alt: 'Aire acondicionado split en 3D', scale: '0.439 0.439 0.439', orbit: '20deg 80deg auto', pared: true },
+        { nombre: 'Licuadora', src: 'models/licuadora.glb', alt: 'Licuadora en 3D', scale: '0.1 0.1 0.1', orbit: '-25deg 70deg auto' },
       ],
     },
     {
@@ -270,6 +272,8 @@ window.CV = {
     '"Microwave Oven" — Mustafa Yerebasmaz (Sketchfab), CC BY 4.0 · optimizado y escalado',
     '"Led Tv" — Daniyal Malik (Sketchfab), CC BY 4.0 · optimizado y escalado',
     '"Air condition Daikin" — maxsbond.work (Sketchfab), CC BY 4.0 · optimizado y escalado',
+    '"Modern Fridge" — dylanheyes (Sketchfab), CC BY 4.0 · optimizado y escalado',
+    '"Blender" — giga / gits3d (Sketchfab), CC BY 4.0 · optimizado y escalado',
     '"(FREE) Porsche 911 Carrera 4S" — Karol Miklas (Sketchfab), CC BY-SA 4.0',
     'Gorila low poly — iRahulRajput (Sketchfab), CC BY 4.0',
     '"RobotExpressive" — Tomás Laulhé, modificado por Don McCurdy, CC0',

@@ -157,12 +157,13 @@ window.CV = {
       imagenes: ['img/app/camlibre-inicio.webp', 'img/app/camlibre-video_en_vivo.webp', 'img/app/camlibre-dispositivos.webp'],
     },
     {
-      nombre: 'Bot de gestión — Ferretería La Popular',
+      nombre: 'Bot de pedidos y administración para una ferretería',
       etiqueta: 'Bot en producción',
       texto:
         'Bot de Telegram que usa el personal todos los días: pedidos de clientes, facturas de proveedores por mes, ' +
         'faltantes, libreta de crédito, buscador de productos y avisos automáticos a Discord. Más de 800 tests.',
       stack: ['Python', 'Telegram Bot API', 'Discord', 'Docker'],
+      imagenes: [['img/app/bot-pedidos-menu.webp', 416, 1144]],
     },
     {
       nombre: 'Realidad Aumentada web',
@@ -179,6 +180,8 @@ window.CV = {
         'Comunidad privada por invitación: mensajería en tiempo real, historias que se borran a las 24 h, ' +
         'moderación y pagos con Mercado Pago. Privacidad por diseño (se borran los datos GPS de fotos y videos).',
       stack: ['React Native', 'Expo', 'Node.js', 'WebSocket', 'SQLite'],
+      imagenes: ['img/app/pambauy-chats.webp', 'img/app/pambauy-cerca.webp', 'img/app/pambauy-historia.webp', 'img/app/pambauy-chat.webp']
+        .map((src) => [src, 480, 1039]),
     },
     {
       nombre: 'Polarizados a Medida',
@@ -189,10 +192,13 @@ window.CV = {
       stack: ['Next.js', 'Prisma', 'PostgreSQL'],
     },
     {
-      nombre: 'Tienda Shopify + automatización',
-      etiqueta: 'E-commerce',
-      texto: 'Importador y gestor de catálogo para Shopify, publicación automática en Instagram y SEO local.',
-      stack: ['Python', 'Shopify API', 'SEO'],
+      nombre: 'Bot de productos para Shopify',
+      etiqueta: 'Bot + e-commerce',
+      texto:
+        'Bot de Telegram que carga productos a la tienda Shopify: arma el borrador con título, precio, recargo y foto, ' +
+        'y con un botón lo publica en la tienda online y en Instagram. Incluye importador de catálogo y SEO local.',
+      stack: ['Python', 'Telegram Bot API', 'Shopify API', 'Instagram'],
+      imagenes: [['img/app/bot-productos-shopify.webp', 419, 858]],
     },
   ],
 
@@ -217,7 +223,7 @@ window.CV = {
       [2, 'Adaptador DVRIP real (login, keepalive, PTZ, streaming en vivo)', '2026-09-12', 824, 0, 2],
       [1, 'Core de cámaras + MVP de app (lista + video en vivo)', '2026-09-12', 2901, 0, 58],
     ],
-    'Bot La Popular': [
+    'Bot ferretería': [
       [39, 'fix(crédito): el botón "Crédito" del menú principal nunca abre el padrón', '2026-09-09', 86, 38, 2],
       [38, 'feat(crédito): vista del empleado sin saldos y botones sin emoji', '2026-09-09', 253, 140, 3],
       [36, 'feat: libreta de crédito (fiado) — conversación de Telegram, menú y tests', '2026-09-08', 1321, 3, 7],
@@ -240,14 +246,14 @@ window.CV = {
   // Capturas reales de GitHub (se agregan en img/prs/). Si la lista está vacía, no se muestra el bloque.
   capturas: [
     { src: 'img/prs/camlibre-14-wifi-bluetooth.webp', texto: 'CamLibre #14 — Protocolo WiFi por Bluetooth reconstruido por ingeniería inversa' },
-    { src: 'img/prs/lapopular-36-libreta-credito.webp', texto: 'Bot La Popular #36 — Libreta de crédito (fiado) en Telegram, con tests' },
+    { src: 'img/prs/bot-ferreteria-36-libreta-credito.webp', texto: 'Bot ferretería #36 — Libreta de crédito (fiado) en Telegram, con tests' },
     { src: 'img/prs/camlibre-8-rediseno.webp', texto: 'CamLibre #8 — Rediseño completo de la interfaz' },
     { src: 'img/prs/pambauy-1-video-ffmpeg.webp', texto: 'PambaUy #1 — Video en estados, borrando los datos GPS con ffmpeg' },
   ],
 
   trayectoria: [
     ['Actualidad · +2 años', 'Desarrollador freelance', 'Apps Android, bots de Telegram, tiendas Shopify, Realidad Aumentada y automatizaciones a medida para clientes reales.'],
-    ['', 'Gestión comercial y digital — Ferretería La Popular (San José)', 'Atención al cliente, ventas, asesoramiento técnico y administración de la tienda online.'],
+    ['', 'Gestión comercial y digital — Ferretería (San José)', 'Atención al cliente, ventas, asesoramiento técnico y administración de la tienda online.'],
     ['', 'Pasante en elaboración de proyectos — Gobierno de Canarias (España)', 'Proyectos urbanos y rurales durante una pasantía institucional.'],
     ['', 'Vendedor remoto — Empresa española de insumos tecnológicos', 'Venta y asesoramiento a distancia, seguimiento y postventa.'],
     ['', 'Asistente — Ejército Nacional, Batallón de Ingenieros N.º 4 (Maldonado)', 'Apoyo operativo y trabajo en equipo.'],

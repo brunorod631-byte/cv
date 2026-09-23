@@ -148,7 +148,10 @@
     );
     if (p.imagenes) {
       card.append(el('div', { class: 'galeria' },
-        ...p.imagenes.map((src) => el('img', { src, alt: 'Captura de ' + p.nombre, loading: 'lazy', width: '480', height: '1061' }))));
+        ...p.imagenes.map((img) => {
+          const [src, w, h] = Array.isArray(img) ? img : [img, 480, 1061];
+          return el('img', { src, alt: 'Captura de ' + p.nombre, loading: 'lazy', width: String(w), height: String(h) });
+        })));
     }
     $('lista-proyectos').append(card);
   }

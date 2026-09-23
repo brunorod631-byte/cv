@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Bruno Rodríguez · Desarrollador</title>
+  <meta name="description" content="CV digital de Bruno Rodríguez: apps, bots, web y Realidad Aumentada. Probá las demos de RA desde tu celular." />
+  <meta name="theme-color" content="#0e1116" />
+  <meta property="og:title" content="Bruno Rodríguez · Desarrollador" />
+  <meta property="og:description" content="Apps, bots, web y Realidad Aumentada. Probá las demos desde tu celular." />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=1" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
+  <script src="data.js?v=1" defer></script>
+  <script src="app.js?v=1" defer></script>
+</head>
+<body>
+  <nav class="nav" aria-label="Secciones">
+    <a href="#inicio" class="nav-brand">BR</a>
+    <div class="nav-links">
+      <a href="#ra">Realidad Aumentada</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#github">GitHub</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <header id="inicio" class="hero wrap">
+    <p class="kicker" id="lugar"></p>
+    <h1 id="nombre"></h1>
+    <p class="hero-titulo" id="titulo"></p>
+    <p class="hero-resumen" id="resumen"></p>
+    <div class="hero-acciones">
+      <a class="btn btn-primario" href="#ra">Probar la Realidad Aumentada</a>
+      <a class="btn" id="btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn" id="btn-cv" download>Descargar CV (PDF)</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="ra" class="seccion wrap">
+      <div class="seccion-cab">
+        <p class="kicker">Probalo ahora</p>
+        <h2>Realidad Aumentada para tu negocio</h2>
+        <p class="bajada">Elegí un rubro y tocá el botón: el modelo aparece con la cámara de tu celular, a tamaño real, sin instalar nada.</p>
+      </div>
+      <div class="rubros" role="tablist" id="rubros"></div>
+      <div class="ra-panel">
+        <div class="ra-visor">
+          <model-viewer id="visor" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor"
+            camera-controls touch-action="pan-y" auto-rotate shadow-intensity="1" shadow-softness="1"
+            environment-image="neutral" exposure="1.05" interaction-prompt="auto" loading="eager">
+            <button slot="ar-button" class="ar-btn" type="button" id="ar-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.2 6.6 3.7L12 11.6 5.4 7.9 12 4.2ZM5 9.6l6 3.4v6.9l-6-3.3V9.6Zm8 10.3V13l6-3.4v7l-6 3.3Z"/></svg>
+              <span id="ar-btn-texto">Ver en mi mesa</span>
+            </button>
+            <div slot="progress-bar" class="progreso"><div class="progreso-barra" id="progreso"></div></div>
+          </model-viewer>
+          <p class="ra-aviso" id="ra-aviso" hidden>Abrí esta página desde el celular para proyectar el modelo en tu espacio.</p>
+        </div>
+        <div class="ra-info">
+          <p class="kicker" id="ra-rubro"></p>
+          <h3 id="ra-titulo"></h3>
+          <p id="ra-texto"></p>
+          <a class="enlace" id="ra-extra" target="_blank" rel="noopener" hidden></a>
+          <ol class="pasos">
+            <li>Tocá <strong>el botón</strong> sobre el modelo.</li>
+            <li>Apuntá la cámara a la mesa o al piso y mové un poco el celular.</li>
+            <li>Arrastrá para moverlo y usá dos dedos para girarlo.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="seccion wrap">
+      <div class="seccion-cab">
+        <p class="kicker">Lo que construí</p>
+        <h2>Proyectos</h2>
+      </div>
+      <div class="proyectos" id="lista-proyectos"></div>
+    </section>
+
+    <section id="github" class="seccion wrap">
+      <div class="seccion-cab">
+        <p class="kicker">Cómo trabajo</p>
+        <h2>Pull requests en GitHub</h2>
+        <p class="bajada">Cada cambio va en su propio pull request, con descripción, pruebas y revisión antes de llegar a producción. Estos son reales, de repositorios privados de clientes y proyectos propios.</p>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="capturas" id="capturas" hidden></div>
+      <div class="rubros" role="tablist" id="repos"></div>
+      <ul class="prs" id="prs"></ul>
+    </section>
+
+    <section id="trayectoria" class="seccion wrap">
+      <div class="seccion-cab">
+        <p class="kicker">Recorrido</p>
+        <h2>Trayectoria</h2>
+      </div>
+      <div class="dos-col">
+        <ol class="linea" id="linea"></ol>
+        <div>
+          <h3 class="sub">Formación</h3>
+          <ul class="lista" id="formacion"></ul>
+          <h3 class="sub">Herramientas</h3>
+          <ul class="chips" id="habilidades"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="seccion wrap contacto">
+      <p class="kicker">Hablemos</p>
+      <h2>¿Lo querés para tu negocio o tu equipo?</h2>
+      <div class="contacto-grid" id="contacto-grid"></div>
+    </section>
+  </main>
+
+  <footer class="wrap pie">
+    <p>Modelos 3D de terceros:</p>
+    <ul id="creditos"></ul>
+    <p>© <span id="anio"></span> Bruno Rodríguez</p>
+  </footer>
+</body>
+</html>

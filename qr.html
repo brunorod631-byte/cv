@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR para imprimir · Bruno Rodríguez</title>
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 24px 16px; background: #eceff3; font-family: Inter, system-ui, sans-serif; color: #111; }
+    .hoja { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+    .tarjeta { width: 320px; max-width: 100%; background: #fff; border-radius: 16px; padding: 24px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+    .tarjeta img { width: 220px; height: 220px; margin: 16px auto; display: block; image-rendering: pixelated; }
+    .kicker { color: #b3700a; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
+    h1 { font-size: 24px; margin: 6px 0 0; }
+    p { margin: 0; color: #444; font-size: 14px; }
+    .url { font-size: 12px; color: #777; margin-top: 8px; word-break: break-all; }
+    .ayuda { text-align: center; color: #555; font-size: 14px; margin-top: 24px; }
+    @media print { body { background: #fff; padding: 0; } .tarjeta { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; } .ayuda { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="hoja">
+    <div class="tarjeta">
+      <p class="kicker">Currículum digital</p>
+      <h1>Bruno Rodríguez</h1>
+      <p>Apps, bots, web y Realidad Aumentada</p>
+      <img src="assets/qr-cv.svg" alt="QR al CV digital" />
+      <p>Escaneá con la cámara del celular</p>
+      <p class="url">brunorod631-byte.github.io/cv</p>
+    </div>
+    <div class="tarjeta">
+      <p class="kicker">Probalo en tu mesa</p>
+      <h1>Tu menú en 3D</h1>
+      <p>Mirá el plato sobre la mesa antes de pedirlo</p>
+      <img src="assets/qr-restaurantes.svg" alt="QR a la demo de Realidad Aumentada para restaurantes" />
+      <p>Escaneá y tocá «Ver en mi mesa»</p>
+      <p class="url">brunorod631-byte.github.io/cv/#ra-restaurantes</p>
+    </div>
+  </div>
+  <p class="ayuda">Imprimí esta página (Ctrl+P). Cada QR queda en una tarjeta para recortar.</p>
+</body>
+</html>

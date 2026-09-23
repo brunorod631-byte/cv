@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tarjeta de visita · Bruno Rodríguez</title>
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /*
+      Tarjeta de 90 × 50 mm a doble faz, con los colores de la página.
+      ?modo=imprenta → 2 páginas (frente y dorso) de 96 × 56 mm: 3 mm de sangrado por lado.
+      ?modo=a4       → 2 hojas A4 con 10 tarjetas cada una, para imprimir en casa a doble faz.
+    */
+    :root { --fondo: #0e1116; --panel: #1a2029; --texto: #e8ecf1; --suave: #9aa5b4; --acento: #f5a524; --acento-texto: #1a1204; --s: 0mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #d9dde2; font-family: Inter, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    p { margin: 0; }
+
+    .cara {
+      position: relative; overflow: hidden; flex: none;
+      width: calc(90mm + 2 * var(--s)); height: calc(50mm + 2 * var(--s));
+      background: var(--fondo); color: var(--texto);
+    }
+    /* Anillos decorativos, como en la plantilla. */
+    .anillos { position: absolute; display: flex; gap: 1.2mm; }
+    .anillos i { width: 6.5mm; height: 6.5mm; border-radius: 50%; border: 1.3mm solid currentColor; }
+    .anillos-col { flex-direction: column; }
+
+    /* ---- Frente ---- */
+    .frente > .anillos { top: calc(var(--s) - 1.6mm); left: calc(var(--s) + 2mm); color: rgba(255, 255, 255, 0.05); }
+    .marca { position: absolute; left: var(--s); right: var(--s); top: calc(var(--s) + 10.5mm); display: flex; align-items: center; justify-content: center; gap: 3mm; }
+    .logo { width: 12mm; height: 12mm; border-radius: 2.6mm; background: var(--acento); color: var(--acento-texto); display: grid; place-items: center; font-weight: 900; font-size: 13pt; letter-spacing: -0.02em; }
+    .nombre-grande { font-weight: 900; font-size: 15.5pt; line-height: 0.98; letter-spacing: 0.02em; text-transform: uppercase; }
+    .lema { position: absolute; left: var(--s); right: var(--s); top: calc(var(--s) + 25mm); text-align: center; font-size: 6.6pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--suave); font-weight: 600; }
+    .banda {
+      position: absolute; left: 0; right: 0; bottom: 0; height: calc(12mm + var(--s));
+      background: var(--acento); color: var(--acento-texto);
+    }
+    .banda .web { position: absolute; left: calc(var(--s) + 6mm); top: 4.1mm; font-weight: 800; font-size: 7.6pt; letter-spacing: 0.02em; }
+    .banda .anillos { left: auto; right: calc(var(--s) + 2.5mm); top: 2.7mm; color: rgba(26, 18, 4, 0.16); }
+
+    /* ---- Dorso ---- */
+    .datos { position: absolute; left: calc(var(--s) + 5.5mm); top: var(--s); bottom: var(--s); width: 48mm; display: flex; flex-direction: column; justify-content: center; }
+    .nombre { font-weight: 900; font-size: 13pt; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+    .rol { margin-top: 1.4mm; font-size: 6.6pt; font-weight: 600; color: var(--acento); letter-spacing: 0.03em; }
+    .lineas { margin-top: 3.6mm; display: grid; gap: 1.4mm; }
+    .linea { border-left: 0.6mm solid var(--acento); padding-left: 1.8mm; font-size: 6.9pt; line-height: 1.35; }
+    .linea b { font-weight: 600; color: var(--suave); font-size: 5.6pt; letter-spacing: 0.08em; text-transform: uppercase; display: block; }
+    .dorso > .anillos { left: calc(var(--s) + 51mm); top: calc(var(--s) + 17mm); color: rgba(255, 255, 255, 0.045); }
+    .panel-qr {
+      position: absolute; top: 0; right: 0; bottom: 0; width: calc(31mm + var(--s));
+      background: var(--acento); display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding-right: var(--s);
+    }
+    .qr { background: #fff; padding: 1.6mm; border-radius: 1.2mm; }
+    .qr img { width: 21mm; height: 21mm; display: block; }
+    .panel-qr p { margin-top: 1.6mm; font-size: 5.8pt; font-weight: 800; color: var(--acento-texto); text-align: center; line-height: 1.2; letter-spacing: 0.02em; }
+    .panel-qr .anillos { right: calc(var(--s) - 2.6mm); bottom: calc(var(--s) - 4.2mm); color: rgba(26, 18, 4, 0.14); }
+
+    /* ---- Pantalla ---- */
+    .barra { max-width: 900px; margin: 16px auto; padding: 0 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; color: #222; }
+    .barra a { padding: 8px 14px; border-radius: 8px; background: #fff; color: #111; text-decoration: none; font-weight: 600; border: 1px solid #ccd; }
+    .vista { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; padding: 16px; }
+    .vista .cara { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); zoom: 1.6; }
+    .hoja { display: none; }
+
+    @media print {
+      body { background: #fff; }
+      .barra, .vista { display: none; }
+      .hoja { display: flex; break-after: page; }
+      .hoja:last-child { break-after: auto; }
+    }
+    /* Imprenta: una cara por página, con sangrado. */
+    body.imprenta .hoja { width: 96mm; height: 56mm; }
+    /* A4: 10 tarjetas por hoja, centradas (el dorso queda alineado al dar vuelta la hoja por el lado largo). */
+    body.a4 .hoja { width: 210mm; height: 297mm; flex-wrap: wrap; align-content: center; justify-content: center; gap: 4mm; padding: 0 13mm; }
+  </style>
+</head>
+<body>
+  <div class="barra">
+    <a href="?modo=imprenta">PDF para imprenta</a>
+    <a href="?modo=a4">PDF para imprimir en casa (A4)</a>
+    <span>Frente y dorso de 90 × 50 mm.</span>
+  </div>
+  <div class="vista" id="vista"></div>
+
+  <template id="t-frente">
+    <div class="cara frente">
+      <div class="anillos"><i></i><i></i><i></i><i></i></div>
+      <div class="marca">
+        <div class="logo">BR</div>
+        <div class="nombre-grande">Bruno<br />Rodríguez</div>
+      </div>
+      <p class="lema">Apps · Web · Realidad Aumentada</p>
+      <div class="banda">
+        <p class="web">brunorod631-byte.github.io/cv</p>
+        <div class="anillos"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="t-dorso">
+    <div class="cara dorso">
+      <div class="anillos anillos-col"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="datos">
+        <p class="nombre">Bruno Rodríguez</p>
+        <p class="rol">Desarrollador · Realidad Aumentada</p>
+        <div class="lineas">
+          <p class="linea"><b>WhatsApp</b>098 611 824</p>
+          <p class="linea"><b>Email</b>brunorod631@gmail.com</p>
+          <p class="linea"><b>Web</b>brunorod631-byte.github.io/cv</p>
+        </div>
+      </div>
+      <div class="panel-qr">
+        <div class="qr"><img src="assets/qr-cv.svg" alt="QR a la página" /></div>
+        <p>Escaneá y probá<br />la Realidad Aumentada</p>
+        <div class="anillos anillos-col"><i></i><i></i></div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    const modo = new URLSearchParams(location.search).get('modo') === 'a4' ? 'a4' : 'imprenta';
+    document.body.classList.add(modo);
+    const cara = (id) => document.getElementById(id).content.cloneNode(true);
+    // Tamaño de página según el modo (Chrome toma el @page para el PDF).
+    const pagina = document.createElement('style');
+    pagina.textContent = modo === 'a4' ? '@page { size: A4; margin: 0; }' : '@page { size: 96mm 56mm; margin: 0; }';
+    document.head.append(pagina);
+    if (modo === 'imprenta') document.documentElement.style.setProperty('--s', '3mm');
+
+    // Vista previa en pantalla: frente y dorso.
+    for (const id of ['t-frente', 't-dorso']) document.getElementById('vista').append(cara(id));
+
+    // Hojas para imprimir.
+    for (const id of ['t-frente', 't-dorso']) {
+      const hoja = document.createElement('div');
+      hoja.className = 'hoja';
+      for (let i = 0; i < (modo === 'a4' ? 10 : 1); i++) hoja.append(cara(id));
+      document.body.append(hoja);
+    }
+  </script>
+</body>
+</html>

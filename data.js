@@ -95,14 +95,14 @@ window.CV = {
   ],
 
   // Plan Socio de Mantenimiento (servicio para edificios y vecinos).
-  // precio: null muestra "Consultá el valor"; poné un texto (ej. '$ 990 por mes') para mostrarlo.
+  // precio: texto que se muestra en la tarjeta; null muestra "Consultá el valor".
   plan: {
     nombre: 'Plan Socio de Mantenimiento',
     publico: 'Para edificios, vecinos y comercios',
     bajada:
       'Una cuota mensual fija que cubre la mano de obra de los arreglos del día a día y las urgencias de tu casa. ' +
       'Si sos socio, solo pagás los materiales.',
-    precio: null,
+    precio: '$ 650 por mes',
     whatsappTexto: 'Hola Bruno, quiero información del Plan Socio de Mantenimiento.',
     pasos: [
       ['Te asociás', 'Pagás una cuota mensual fija, sin sorpresas.'],

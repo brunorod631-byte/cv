@@ -10,3 +10,8 @@ Página estática (HTML/CSS/JS, sin build) publicada en GitHub Pages: https://br
 - Al publicar cambios, subir el `?v=` de `style.css`, `data.js` y `app.js` en `index.html` para que el celular no muestre la versión vieja.
 
 Modelos 3D de terceros: ver créditos al pie de la página.
+
+## Tarjetas para imprimir
+
+- `tarjetas.html?tipo=cv` y `tarjetas.html?tipo=socio`: hoja A4 con 10 tarjetas de 85 × 55 mm.
+- PDF listos en `imprimir/` (se regeneran con Chrome headless `--print-to-pdf` si cambia el diseño).

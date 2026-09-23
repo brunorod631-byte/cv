@@ -168,7 +168,12 @@ window.CV = {
     ],
   },
   // Capturas reales de GitHub (se agregan en img/prs/). Si la lista está vacía, no se muestra el bloque.
-  capturas: [],
+  capturas: [
+    { src: 'img/prs/camlibre-14-wifi-bluetooth.webp', texto: 'CamLibre #14 — Protocolo WiFi por Bluetooth reconstruido por ingeniería inversa' },
+    { src: 'img/prs/lapopular-36-libreta-credito.webp', texto: 'Bot La Popular #36 — Libreta de crédito (fiado) en Telegram, con tests' },
+    { src: 'img/prs/camlibre-8-rediseno.webp', texto: 'CamLibre #8 — Rediseño completo de la interfaz' },
+    { src: 'img/prs/pambauy-1-video-ffmpeg.webp', texto: 'PambaUy #1 — Video en estados, borrando los datos GPS con ffmpeg' },
+  ],
 
   trayectoria: [
     ['Actualidad · +2 años', 'Desarrollador freelance', 'Apps Android, bots de Telegram, tiendas Shopify, Realidad Aumentada y automatizaciones a medida para clientes reales.'],

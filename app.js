@@ -94,12 +94,8 @@
     b.addEventListener('click', () => { cerrarIntro(); mostrarDemo(d, i); $('ra').scrollIntoView(); });
     return b;
   }
-  // Cada pista lleva la lista dos veces para que la animación dé la vuelta sin salto.
-  const corte = Math.floor(items.length / 2);
-  const filas = [items, items.slice(corte).concat(items.slice(0, corte))];
-  ['carrusel-a', 'carrusel-b'].forEach((id, f) => {
-    for (let k = 0; k < 2; k++) for (const it of filas[f]) $(id).append(tarjetaCarrusel(it));
-  });
+  // La pista lleva la lista dos veces para que la animación dé la vuelta sin salto.
+  for (let k = 0; k < 2; k++) for (const it of items) $('carrusel-a').append(tarjetaCarrusel(it));
   function cerrarIntro() {
     intro.classList.add('saliendo');
     document.body.classList.remove('con-intro');
@@ -114,6 +110,7 @@
     $('intro-iniciar').focus();
   }
   $('intro-iniciar').addEventListener('click', cerrarIntro);
+  $('intro-plan').addEventListener('click', () => { cerrarIntro(); $('mantenimiento').scrollIntoView(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
 
   visor.addEventListener('progress', (e) => {

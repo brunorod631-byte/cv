@@ -142,9 +142,8 @@ body.con-intro { overflow: hidden; }
   font-weight: 800; font-size: clamp(16px, 4.6vw, 22px); letter-spacing: -0.01em;
 }
 .intro-ra { padding: 2px 8px; border-radius: 8px; background: var(--acento-texto); color: var(--acento); font-size: 0.8em; }
-.carrusel { display: grid; gap: 12px; padding: 22px 0 8px; overflow: hidden; }
-.carrusel-pista { display: flex; gap: 12px; width: max-content; animation: desfile 40s linear infinite; }
-.carrusel-inversa { animation-direction: reverse; animation-duration: 46s; }
+.carrusel { padding: 22px 0 8px; overflow: hidden; }
+.carrusel-pista { display: flex; gap: 12px; width: max-content; animation: desfile 70s linear infinite; }
 .carrusel:hover .carrusel-pista, .carrusel:active .carrusel-pista { animation-play-state: paused; }
 @keyframes desfile { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
 .carrusel-item {
@@ -157,7 +156,10 @@ body.con-intro { overflow: hidden; }
 .intro-cuerpo { width: 100%; max-width: 560px; margin: auto auto 0; padding: 20px 16px 32px; text-align: center; }
 .intro-cuerpo h1 { font-size: clamp(28px, 8vw, 40px); font-weight: 800; }
 .intro-cuerpo > p:not(.kicker) { color: var(--suave); margin-top: 12px; }
-.intro-btn { width: 100%; max-width: 320px; margin-top: 24px; font-size: 17px; min-height: 54px; }
+.intro-cuerpo strong { color: var(--texto); }
+.intro-acciones { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 24px; }
+.intro-btn { width: 100%; max-width: 320px; font-size: 17px; min-height: 54px; }
+.intro-btn-plan { font-size: 15px; min-height: 50px; }
 @media (prefers-reduced-motion: reduce) {
   .carrusel { overflow-x: auto; }
   .carrusel-pista { animation: none; }

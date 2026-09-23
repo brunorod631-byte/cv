@@ -26,12 +26,41 @@
   const esCelular = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   $('ra-aviso').hidden = esCelular;
 
-  function mostrarDemo(d) {
-    visor.setAttribute('src', d.src);
-    visor.setAttribute('alt', d.alt);
-    visor.setAttribute('scale', d.scale);
-    visor.setAttribute('camera-orbit', d.orbit);
+  let demoActual = null;
+
+  // Carga un modelo en el visor. Los rubros con varios modelos (d.modelos) llaman una vez por modelo elegido.
+  function cargarModelo(m, d) {
+    visor.setAttribute('src', m.src);
+    visor.setAttribute('alt', m.alt);
+    visor.setAttribute('scale', m.scale || d.scale || '1 1 1');
+    visor.setAttribute('camera-orbit', m.orbit);
+    // Tamaño real: en RA no se deja achicar/agrandar, así el cliente ve si el mueble entra.
+    visor.setAttribute('ar-scale', d.tamanoReal ? 'fixed' : 'auto');
     if (d.animado) visor.setAttribute('autoplay', ''); else visor.removeAttribute('autoplay');
+    $('ra-medidas').hidden = true;
+    for (const b of $('ra-modelos').children) b.setAttribute('aria-pressed', String(b.textContent === m.nombre));
+  }
+
+  const medida = (n) => n.toLocaleString('es-UY', { maximumFractionDigits: 2 });
+  visor.addEventListener('load', () => {
+    const d = demoActual;
+    if (!d || !d.tamanoReal) return;
+    const t = visor.getDimensions();
+    $('ra-medidas').textContent = `Medidas: ${medida(t.x)} × ${medida(t.z)} m · alto ${medida(t.y)} m`;
+    $('ra-medidas').hidden = false;
+  });
+
+  function mostrarDemo(d) {
+    demoActual = d;
+    const modelos = $('ra-modelos');
+    modelos.replaceChildren();
+    modelos.hidden = !d.modelos;
+    for (const m of d.modelos || []) {
+      const b = el('button', { class: 'modelo', type: 'button', text: m.nombre });
+      b.addEventListener('click', () => cargarModelo(m, d));
+      modelos.append(b);
+    }
+    cargarModelo(d.modelos ? d.modelos[0] : d, d);
     $('ar-btn-texto').textContent = d.boton;
     $('ra-rubro').textContent = d.rubro;
     $('ra-titulo').textContent = d.titulo;

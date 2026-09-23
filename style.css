@@ -113,6 +113,14 @@ model-viewer { width: 100%; height: min(62vh, 480px); --poster-color: transparen
 .ra-info { padding: 22px 20px 24px; }
 .ra-info h3 { font-size: 24px; margin-bottom: 10px; }
 .ra-info > p:not(.kicker) { color: var(--suave); }
+.modelos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.modelo {
+  min-height: 40px; padding: 0 14px; border-radius: 10px;
+  border: 1px solid var(--borde); background: var(--fondo-2); color: var(--texto);
+  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.modelo[aria-pressed='true'] { border-color: var(--acento); color: var(--acento); }
+.medidas { margin-top: 12px; font-size: 14px; color: var(--texto); font-variant-numeric: tabular-nums; }
 .enlace { display: inline-block; margin-top: 12px; color: var(--acento); font-weight: 600; text-decoration: none; }
 .pasos { margin: 18px 0 0; padding: 16px 16px 16px 36px; border-radius: 12px; background: var(--fondo-2); color: var(--suave); font-size: 14px; }
 .pasos li + li { margin-top: 4px; }

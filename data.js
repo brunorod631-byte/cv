@@ -35,6 +35,22 @@ window.CV = {
       boton: 'Ver en mi mesa',
     },
     {
+      id: 'muebles',
+      rubro: 'Mueblerías e inmobiliarias',
+      titulo: 'El mueble, en el living del cliente',
+      texto:
+        'El cliente ve el mueble a tamaño real en su casa antes de comprarlo y comprueba si entra. ' +
+        'Para inmobiliarias: amueblar un ambiente vacío durante la visita para que se imaginen viviendo ahí.',
+      boton: 'Ver en mi living',
+      tamanoReal: true,
+      modelos: [
+        { nombre: 'Sofá', src: 'models/sofa-terciopelo.glb', alt: 'Sofá de terciopelo en 3D', orbit: '25deg 70deg auto' },
+        { nombre: 'Sillón', src: 'models/sillon.glb', alt: 'Sillón en 3D', orbit: '25deg 70deg auto' },
+        { nombre: 'Mesa de comedor', src: 'models/mesa-comedor.glb', alt: 'Mesa de comedor de madera en 3D', orbit: '25deg 60deg auto' },
+        { nombre: 'Mesa de luz', src: 'models/mesa-de-luz.glb', alt: 'Mesa de luz clásica en 3D', orbit: '25deg 70deg auto' },
+      ],
+    },
+    {
       id: 'automotoras',
       rubro: 'Automotoras',
       titulo: 'El auto, en el garaje del cliente',
@@ -67,7 +83,7 @@ window.CV = {
       rubro: 'Tiendas',
       titulo: 'El producto, antes de comprarlo',
       texto:
-        'Cualquier producto con su modelo 3D: muebles, decoración, juguetes. El cliente ve el tamaño real en su casa.',
+        'Cualquier producto con su modelo 3D: decoración, electrodomésticos, juguetes. El cliente ve el tamaño real en su casa.',
       src: 'models/gorila-lowpoly.glb',
       alt: 'Figura de gorila en 3D',
       scale: '0.5 0.5 0.5',
@@ -199,5 +215,8 @@ window.CV = {
     '"(FREE) Porsche 911 Carrera 4S" — Karol Miklas (Sketchfab), CC BY-SA 4.0',
     'Gorila low poly — iRahulRajput (Sketchfab), CC BY 4.0',
     '"RobotExpressive" — Tomás Laulhé, modificado por Don McCurdy, CC0',
+    '"Glam Velvet Sofa" — Eric Chadwick / Wayfair (Khronos glTF Sample Assets), CC BY 4.0',
+    '"Sheen Chair" — Eric Chadwick / Wayfair (Khronos glTF Sample Assets), CC0',
+    '"Wooden Table 02" y "Classic Nightstand 01" — Poly Haven, CC0',
   ],
 };

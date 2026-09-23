@@ -124,6 +124,7 @@ window.CV = {
     whatsappTexto: 'Hola Bruno, quiero información del Plan Socio de Mantenimiento.',
     pasos: [
       ['Te asociás', 'Pagás una cuota mensual fija, sin sorpresas.'],
+      ['Recibís tu tarjeta NFC', 'Acercás el celular a la tarjeta y se abre WhatsApp directo con Bruno, sin buscar el número.'],
       ['Nos escribís', 'Cuando surge algo, mandás un WhatsApp con una foto del problema.'],
       ['Lo resolvemos', 'Coordinamos la visita y hacemos el trabajo.'],
       ['Pagás solo materiales', 'La mano de obra ya está cubierta por la cuota.'],

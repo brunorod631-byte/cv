@@ -1,6 +1,6 @@
 # CV digital — Bruno Rodríguez
 
-Página estática (HTML/CSS/JS, sin build) publicada en GitHub Pages: https://brunorod631-byte.github.io/cv/
+Página estática (HTML/CSS/JS, sin build) publicada en GitHub Pages: https://brunorod.uy/
 
 - `data.js`: todo el contenido (proyectos, demos de RA, PR, trayectoria, contacto). Para cambiar algo, se edita solo este archivo.
 - `index.html` + `app.js` + `style.css`: la página.

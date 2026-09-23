@@ -36,6 +36,8 @@
     visor.setAttribute('camera-orbit', m.orbit);
     // Tamaño real: en RA no se deja achicar/agrandar, así el cliente ve si el mueble entra.
     visor.setAttribute('ar-scale', d.tamanoReal ? 'fixed' : 'auto');
+    // Lo que va colgado (aire split) se apoya en la pared en vez del piso.
+    visor.setAttribute('ar-placement', m.pared ? 'wall' : 'floor');
     if (d.animado) visor.setAttribute('autoplay', ''); else visor.removeAttribute('autoplay');
     $('ra-medidas').hidden = true;
     for (const b of $('ra-modelos').children) b.setAttribute('aria-pressed', String(b.textContent === m.nombre));

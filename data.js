@@ -53,6 +53,22 @@ window.CV = {
       ],
     },
     {
+      id: 'electrodomesticos',
+      rubro: 'Electrodomésticos',
+      titulo: 'Mirá cómo queda en tu casa antes de comprarlo',
+      texto:
+        'El cliente proyecta el electrodoméstico a tamaño real en su cocina, lavadero o living y comprueba si entra. ' +
+        'Menos devoluciones y más confianza para comprar online.',
+      boton: 'Ver en mi casa',
+      tamanoReal: true,
+      modelos: [
+        { nombre: 'Lavarropas', src: 'models/lavarropas.glb', alt: 'Lavarropas en 3D', scale: '0.0357 0.0357 0.0357', orbit: '20deg 75deg auto' },
+        { nombre: 'Microondas', src: 'models/microondas.glb', alt: 'Microondas en 3D', scale: '0.00909 0.00909 0.00909', orbit: '15deg 75deg auto' },
+        { nombre: 'Smart TV 55"', src: 'models/tv-led.glb', alt: 'Televisor LED de 55 pulgadas en 3D', scale: '0.0946 0.0946 0.0946', orbit: '20deg 80deg auto' },
+        { nombre: 'Aire acondicionado split', src: 'models/aire-split.glb', alt: 'Aire acondicionado split en 3D', scale: '0.439 0.439 0.439', orbit: '20deg 80deg auto', pared: true },
+      ],
+    },
+    {
       id: 'automotoras',
       rubro: 'Automotoras',
       titulo: 'El auto, en el garaje del cliente',
@@ -250,6 +266,10 @@ window.CV = {
     '"Strawberry Chocolate Cake" — Poly Haven, CC0',
     '"Big Mac" — Aaron Theesfeld (Sketchfab), CC BY 4.0 · optimizado y escalado',
     '"Pasta with Meatballs and Sausage" — Michael Bastianelli (Sketchfab), CC BY 4.0 · optimizado y escalado',
+    '"Washing Machine (new)" — nikita.bulgakov (Sketchfab), CC BY 4.0 · optimizado y escalado',
+    '"Microwave Oven" — Mustafa Yerebasmaz (Sketchfab), CC BY 4.0 · optimizado y escalado',
+    '"Led Tv" — Daniyal Malik (Sketchfab), CC BY 4.0 · optimizado y escalado',
+    '"Air condition Daikin" — maxsbond.work (Sketchfab), CC BY 4.0 · optimizado y escalado',
     '"(FREE) Porsche 911 Carrera 4S" — Karol Miklas (Sketchfab), CC BY-SA 4.0',
     'Gorila low poly — iRahulRajput (Sketchfab), CC BY 4.0',
     '"RobotExpressive" — Tomás Laulhé, modificado por Don McCurdy, CC0',

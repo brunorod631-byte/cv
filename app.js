@@ -21,6 +21,20 @@
   $('btn-wa').href = cv.contacto.whatsapp;
   $('btn-cv').href = cv.contacto.cv;
 
+  // Compartir: menú nativo del celular; si no existe (computadora), abre WhatsApp con el link.
+  $('btn-compartir').addEventListener('click', async () => {
+    const datos = {
+      title: 'Bruno Rodríguez · Desarrollador',
+      text: 'Apps, bots, web y Realidad Aumentada. Probá las demos desde tu celular.',
+      url: 'https://brunorod.uy/',
+    };
+    if (navigator.share) {
+      try { await navigator.share(datos); } catch { /* el usuario cerró el menú */ }
+      return;
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(datos.text + ' ' + datos.url), '_blank', 'noopener');
+  });
+
   // --- Realidad Aumentada ---
   const visor = $('visor');
   const esCelular = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);

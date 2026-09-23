@@ -250,11 +250,41 @@ body.con-intro { overflow: hidden; }
 .contacto-card:first-child { background: var(--acento); color: var(--acento-texto); border-color: var(--acento); }
 .contacto-card:first-child span { color: var(--acento-texto); opacity: 0.75; }
 
-.pie { padding-top: 24px; padding-bottom: 40px; border-top: 1px solid var(--borde); color: var(--suave); font-size: 12px; }
+/* Formulario de contacto */
+.form-contacto { margin-top: 28px; padding: 20px; border-radius: var(--radio); background: var(--panel); border: 1px solid var(--borde); display: grid; gap: 14px; max-width: 720px; }
+.form-contacto h3 { font-size: 18px; }
+.form-ayuda { color: var(--suave); font-size: 14px; margin-top: -8px; }
+.form-fila { display: grid; gap: 14px; }
+.form-contacto label { display: grid; gap: 6px; font-size: 14px; color: var(--suave); }
+.form-contacto input, .form-contacto select, .form-contacto textarea {
+  width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--borde);
+  background: var(--fondo-2); color: var(--texto); font: inherit; font-size: 16px;
+}
+.form-contacto textarea { resize: vertical; min-height: 120px; }
+.form-contacto input:focus, .form-contacto select:focus, .form-contacto textarea:focus { outline: 2px solid var(--acento); outline-offset: 1px; border-color: var(--acento); }
+.form-contacto .btn { justify-self: start; min-width: 200px; }
+.form-contacto .btn[disabled] { opacity: 0.6; cursor: wait; }
+.form-estado { font-size: 14px; min-height: 1.4em; }
+.form-estado.ok { color: #3ddc84; }
+.form-estado.error { color: #ff6b6b; }
+.trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Botón flotante de WhatsApp */
+.wa-flotante {
+  position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 40;
+  width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
+  background: #25d366; color: #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease;
+}
+.wa-flotante:hover { transform: scale(1.06); }
+.wa-flotante svg { width: 32px; height: 32px; }
+
+.pie { padding-top: 24px; padding-bottom: 100px; border-top: 1px solid var(--borde); color: var(--suave); font-size: 12px; }
 .pie ul { padding-left: 18px; margin: 6px 0 12px; }
 .pie a { color: inherit; }
 
 @media (min-width: 820px) {
+  .form-fila { grid-template-columns: 1fr 1fr; }
   .ra-panel { grid-template-columns: 1.4fr 1fr; }
   model-viewer { height: 520px; }
   .ra-info { padding: 32px; align-self: center; }

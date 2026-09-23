@@ -227,5 +227,32 @@
     $('contacto-grid').append(a);
   }
 
+  // --- Formulario de contacto (lo recibe el Worker de Cloudflare en /api/contacto) ---
+  const form = $('form-contacto');
+  const inicioForm = Date.now();
+  const estado = (texto, tipo) => { $('form-estado').textContent = texto; $('form-estado').className = 'form-estado ' + (tipo || ''); };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const datos = Object.fromEntries(new FormData(form));
+    if (datos.nombre.trim().length < 2 || datos.contacto.trim().length < 6 || datos.mensaje.trim().length < 5) {
+      estado('Completá tu nombre, un WhatsApp o email y el mensaje.', 'error');
+      return;
+    }
+    datos.t = Date.now() - inicioForm;
+    const boton = form.querySelector('button');
+    boton.disabled = true;
+    estado('Enviando…');
+    try {
+      const r = await fetch('/api/contacto', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(datos) });
+      if (!r.ok) throw new Error(r.status);
+      form.reset();
+      estado('¡Listo! Recibí tu mensaje, te respondo a la brevedad.', 'ok');
+    } catch {
+      estado('No se pudo enviar. Probá de nuevo o escribime por WhatsApp.', 'error');
+    } finally {
+      boton.disabled = false;
+    }
+  });
+
   $('anio').textContent = new Date().getFullYear();
 })();

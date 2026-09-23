@@ -13,7 +13,7 @@ window.CV = {
   contacto: {
     whatsapp: 'https://wa.me/59898611824',
     telefono: '098 611 824',
-    email: 'brunorod631@gmail.com',
+    email: 'bruno@brunorod.uy',
     linkedin: 'https://linkedin.com/in/brunorodriguez-dev',
     github: 'https://github.com/brunorod631-byte',
     cv: 'assets/cv-bruno-rodriguez.pdf',

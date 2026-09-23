@@ -31,6 +31,8 @@ window.CV = {
       boton: 'Ver en mi mesa',
       modelos: [
         { nombre: 'Pizza', src: 'models/pizza-bigboss.glb', alt: 'Pizza en 3D', scale: '0.5 0.5 0.5', orbit: '30deg 55deg auto' },
+        { nombre: 'Hamburguesa', src: 'models/hamburguesa.glb', alt: 'Hamburguesa en 3D', scale: '0.022 0.022 0.022', orbit: '30deg 70deg auto' },
+        { nombre: 'Spaghetti con albóndigas', src: 'models/spaghetti.glb', alt: 'Plato de spaghetti con albóndigas en 3D', scale: '0.0277 0.0277 0.0277', orbit: '30deg 55deg auto' },
         { nombre: 'Torta de chocolate y frutillas', src: 'models/torta-frutillas.glb', alt: 'Torta de chocolate con frutillas en 3D', orbit: '30deg 60deg auto' },
       ],
     },
@@ -246,6 +248,8 @@ window.CV = {
   creditos: [
     'Pizza "BigBoss" — ponomarovmax (Sketchfab), CC BY 4.0',
     '"Strawberry Chocolate Cake" — Poly Haven, CC0',
+    '"Big Mac" — Aaron Theesfeld (Sketchfab), CC BY 4.0 · optimizado y escalado',
+    '"Pasta with Meatballs and Sausage" — Michael Bastianelli (Sketchfab), CC BY 4.0 · optimizado y escalado',
     '"(FREE) Porsche 911 Carrera 4S" — Karol Miklas (Sketchfab), CC BY-SA 4.0',
     'Gorila low poly — iRahulRajput (Sketchfab), CC BY 4.0',
     '"RobotExpressive" — Tomás Laulhé, modificado por Don McCurdy, CC0',

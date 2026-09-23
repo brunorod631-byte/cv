@@ -12,13 +12,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=9" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" defer></script>
-  <script src="data.js?v=7" defer></script>
-  <script src="app.js?v=7" defer></script>
+  <script src="data.js?v=9" defer></script>
+  <script src="app.js?v=9" defer></script>
 </head>
 <body>
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-titulo" hidden>
+    <div class="intro-banner"><span class="intro-ra">RA</span> Realidad Aumentada para tu negocio</div>
+    <div class="carrusel" aria-label="Modelos 3D disponibles">
+      <div class="carrusel-pista" id="carrusel-a"></div>
+      <div class="carrusel-pista carrusel-inversa" id="carrusel-b"></div>
+    </div>
+    <div class="intro-cuerpo">
+      <p class="kicker">Bienvenidos</p>
+      <h1 id="intro-titulo">Hola, soy Bruno Rodríguez</h1>
+      <p>Mirá cómo quedan estos productos en tu mesa, tu living o tu local con la cámara del celular, sin instalar nada. Tocá uno para probarlo.</p>
+      <button class="btn btn-primario intro-btn" type="button" id="intro-iniciar">Iniciar</button>
+    </div>
+  </div>
   <nav class="nav" aria-label="Secciones">
     <a href="#inicio" class="nav-brand">BR</a>
     <div class="nav-links">

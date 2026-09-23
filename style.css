@@ -125,6 +125,45 @@ model-viewer { width: 100%; height: min(62vh, 480px); --poster-color: transparen
 .pasos { margin: 18px 0 0; padding: 16px 16px 16px 36px; border-radius: 12px; background: var(--fondo-2); color: var(--suave); font-size: 14px; }
 .pasos li + li { margin-top: 4px; }
 
+/* Intro con carrusel */
+body.con-intro { overflow: hidden; }
+.intro {
+  position: fixed; inset: 0; z-index: 50; overflow-y: auto;
+  display: flex; flex-direction: column;
+  background: radial-gradient(120% 60% at 50% 0%, rgba(245, 165, 36, 0.18), rgba(245, 165, 36, 0) 60%), var(--fondo);
+  transition: opacity 0.35s ease;
+}
+.intro.saliendo { opacity: 0; }
+.intro[hidden] { display: none; }
+.intro-banner {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 16px; text-align: center;
+  background: var(--acento); color: var(--acento-texto);
+  font-weight: 800; font-size: clamp(16px, 4.6vw, 22px); letter-spacing: -0.01em;
+}
+.intro-ra { padding: 2px 8px; border-radius: 8px; background: var(--acento-texto); color: var(--acento); font-size: 0.8em; }
+.carrusel { display: grid; gap: 12px; padding: 22px 0 8px; overflow: hidden; }
+.carrusel-pista { display: flex; gap: 12px; width: max-content; animation: desfile 40s linear infinite; }
+.carrusel-inversa { animation-direction: reverse; animation-duration: 46s; }
+.carrusel:hover .carrusel-pista, .carrusel:active .carrusel-pista { animation-play-state: paused; }
+@keyframes desfile { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
+.carrusel-item {
+  flex: none; width: 132px; padding: 10px 10px 12px; border-radius: 16px;
+  border: 1px solid var(--borde); background: var(--panel); color: var(--texto);
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center;
+}
+.carrusel-item img { width: 112px; height: 112px; margin: 0 auto 6px; object-fit: contain; }
+.carrusel-item span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.intro-cuerpo { width: 100%; max-width: 560px; margin: auto auto 0; padding: 20px 16px 32px; text-align: center; }
+.intro-cuerpo h1 { font-size: clamp(28px, 8vw, 40px); font-weight: 800; }
+.intro-cuerpo > p:not(.kicker) { color: var(--suave); margin-top: 12px; }
+.intro-btn { width: 100%; max-width: 320px; margin-top: 24px; font-size: 17px; min-height: 54px; }
+@media (prefers-reduced-motion: reduce) {
+  .carrusel { overflow-x: auto; }
+  .carrusel-pista { animation: none; }
+}
+@media (min-width: 820px) { .carrusel-item { width: 168px; } .carrusel-item img { width: 148px; height: 148px; } }
+
 /* Plan Socio de Mantenimiento */
 .plan {
   display: grid; gap: 24px; padding: 24px 20px;

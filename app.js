@@ -50,7 +50,7 @@
     $('ra-medidas').hidden = false;
   });
 
-  function mostrarDemo(d) {
+  function mostrarDemo(d, indice = 0) {
     demoActual = d;
     const modelos = $('ra-modelos');
     modelos.replaceChildren();
@@ -60,7 +60,7 @@
       b.addEventListener('click', () => cargarModelo(m, d));
       modelos.append(b);
     }
-    cargarModelo(d.modelos ? d.modelos[0] : d, d);
+    cargarModelo(d.modelos ? d.modelos[indice] : d, d);
     $('ar-btn-texto').textContent = d.boton;
     $('ra-rubro').textContent = d.rubro;
     $('ra-titulo').textContent = d.titulo;
@@ -79,6 +79,40 @@
   const inicial = cv.ra.find((d) => location.hash === '#ra-' + d.id) || cv.ra[0];
   mostrarDemo(inicial);
   if (location.hash.startsWith('#ra-')) $('ra').scrollIntoView();
+
+  // --- Intro con carrusel ---
+  // Se muestra al entrar por la dirección general. Si el QR trae un #sección, va directo.
+  const intro = $('intro');
+  const items = cv.ra.flatMap((d) => (d.modelos || [d]).map((m, i) => ({ d, i, m })));
+  const poster = (src) => 'img/posters/' + src.split('/').pop().replace('.glb', '.webp');
+  function tarjetaCarrusel({ d, i, m }) {
+    const b = el('button', { class: 'carrusel-item', type: 'button' },
+      el('img', { src: poster(m.src), alt: '', width: '180', height: '180', decoding: 'async' }),
+      el('span', { text: m.nombre || d.rubro }));
+    b.addEventListener('click', () => { cerrarIntro(); mostrarDemo(d, i); $('ra').scrollIntoView(); });
+    return b;
+  }
+  // Cada pista lleva la lista dos veces para que la animación dé la vuelta sin salto.
+  const corte = Math.floor(items.length / 2);
+  const filas = [items, items.slice(corte).concat(items.slice(0, corte))];
+  ['carrusel-a', 'carrusel-b'].forEach((id, f) => {
+    for (let k = 0; k < 2; k++) for (const it of filas[f]) $(id).append(tarjetaCarrusel(it));
+  });
+  function cerrarIntro() {
+    intro.classList.add('saliendo');
+    document.body.classList.remove('con-intro');
+    setTimeout(() => { intro.hidden = true; }, 350);
+    try { sessionStorage.setItem('introVista', '1'); } catch {}
+  }
+  let vista = false;
+  try { vista = sessionStorage.getItem('introVista') === '1'; } catch {}
+  if (!location.hash && !vista) {
+    intro.hidden = false;
+    document.body.classList.add('con-intro');
+    $('intro-iniciar').focus();
+  }
+  $('intro-iniciar').addEventListener('click', cerrarIntro);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
 
   visor.addEventListener('progress', (e) => {
     const p = e.detail.totalProgress;

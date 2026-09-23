@@ -15,3 +15,8 @@ Modelos 3D de terceros: ver créditos al pie de la página.
 
 - `tarjetas.html?tipo=cv` y `tarjetas.html?tipo=socio`: hoja A4 con 10 tarjetas de 85 × 55 mm.
 - PDF listos en `imprimir/` (se regeneran con Chrome headless `--print-to-pdf` si cambia el diseño).
+
+## Intro y carrusel
+
+- La intro se muestra al entrar por la dirección general (una vez por sesión). Con `#sección` en la URL (QR de rubros o plan) va directo.
+- Las imágenes del carrusel están en `img/posters/<modelo>.webp`. Para un modelo nuevo: servir la carpeta, abrir `_posters.html` (solo local, no se publica) y llamar `render(i)`; después recortar a 360 × 360 con fondo transparente.

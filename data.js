@@ -49,7 +49,7 @@ window.CV = {
         { nombre: 'Sofá', src: 'models/sofa-terciopelo.glb', alt: 'Sofá de terciopelo en 3D', orbit: '25deg 70deg auto' },
         { nombre: 'Sillón', src: 'models/sillon.glb', alt: 'Sillón en 3D', orbit: '25deg 70deg auto' },
         { nombre: 'Mesa de comedor', src: 'models/mesa-comedor.glb', alt: 'Mesa de comedor de madera en 3D', orbit: '25deg 60deg auto' },
-        { nombre: 'Mesa de luz', src: 'models/mesa-de-luz.glb', alt: 'Mesa de luz clásica en 3D', orbit: '25deg 70deg auto' },
+        { nombre: 'Mesa de luz', src: 'models/mesa-de-luz-cajon.glb', alt: 'Mesa de luz de madera pintada con cajón en 3D', orbit: '25deg 70deg auto' },
       ],
     },
     {
@@ -290,6 +290,6 @@ window.CV = {
     '"RobotExpressive" — Tomás Laulhé, modificado por Don McCurdy, CC0',
     '"Glam Velvet Sofa" — Eric Chadwick / Wayfair (Khronos glTF Sample Assets), CC BY 4.0',
     '"Sheen Chair" — Eric Chadwick / Wayfair (Khronos glTF Sample Assets), CC0',
-    '"Wooden Table 02" y "Classic Nightstand 01" — Poly Haven, CC0',
+    '"Wooden Table 02" y "Painted Wooden Nightstand" — Poly Haven, CC0',
   ],
 };

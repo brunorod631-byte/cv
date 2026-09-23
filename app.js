@@ -86,6 +86,25 @@
     $('progreso').parentElement.classList.toggle('oculto', p >= 1);
   });
 
+  // --- Plan Socio de Mantenimiento ---
+  const plan = cv.plan;
+  $('plan-publico').textContent = plan.publico;
+  $('plan-nombre').textContent = plan.nombre;
+  $('plan-bajada').textContent = plan.bajada;
+  $('plan-precio').textContent = plan.precio || 'Consultá el valor';
+  $('plan-wa').href = cv.contacto.whatsapp + '?text=' + encodeURIComponent(plan.whatsappTexto);
+  plan.pasos.forEach(([t, d], i) => {
+    $('plan-pasos').append(el('li', {}, el('span', { class: 'paso-num', text: String(i + 1) }),
+      el('div', {}, el('strong', { text: t }), el('p', { text: d }))));
+  });
+  for (const [icono, t, d] of plan.incluye) {
+    $('plan-incluye').append(el('article', { class: 'item' },
+      el('span', { class: 'item-icono' }, el('i', { 'data-lucide': icono })),
+      el('h4', { text: t }), el('p', { text: d })));
+  }
+  for (const c of plan.condiciones) $('plan-condiciones').append(el('li', { text: c }));
+  if (window.lucide) window.lucide.createIcons();
+
   // --- Proyectos ---
   for (const p of cv.proyectos) {
     const card = el('article', { class: 'proyecto' + (p.imagenes ? ' con-imagenes' : '') },

@@ -12,16 +12,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
-  <script src="data.js?v=4" defer></script>
-  <script src="app.js?v=4" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" defer></script>
+  <script src="data.js?v=5" defer></script>
+  <script src="app.js?v=5" defer></script>
 </head>
 <body>
   <nav class="nav" aria-label="Secciones">
     <a href="#inicio" class="nav-brand">BR</a>
     <div class="nav-links">
       <a href="#ra">Realidad Aumentada</a>
+      <a href="#mantenimiento">Plan Socio</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#github">GitHub</a>
       <a href="#trayectoria">Trayectoria</a>
@@ -36,6 +38,7 @@
     <p class="hero-resumen" id="resumen"></p>
     <div class="hero-acciones">
       <a class="btn btn-primario" href="#ra">Probar la Realidad Aumentada</a>
+      <a class="btn" href="#mantenimiento">Plan de mantenimiento</a>
       <a class="btn" id="btn-wa" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn" id="btn-cv" download>Descargar CV (PDF)</a>
     </div>
@@ -76,6 +79,25 @@
           </ol>
         </div>
       </div>
+    </section>
+
+    <section id="mantenimiento" class="seccion wrap">
+      <div class="plan">
+        <div class="plan-cab">
+          <p class="kicker" id="plan-publico"></p>
+          <h2 id="plan-nombre"></h2>
+          <p class="bajada" id="plan-bajada"></p>
+          <div class="plan-precio">
+            <span>Cuota mensual</span>
+            <strong id="plan-precio"></strong>
+          </div>
+          <a class="btn btn-primario" id="plan-wa" target="_blank" rel="noopener">Quiero asociarme</a>
+        </div>
+        <ol class="plan-pasos" id="plan-pasos"></ol>
+      </div>
+      <h3 class="sub plan-sub">Qué cubre la cuota</h3>
+      <div class="incluye" id="plan-incluye"></div>
+      <ul class="condiciones" id="plan-condiciones"></ul>
     </section>
 
     <section id="proyectos" class="seccion wrap">

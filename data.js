@@ -28,11 +28,11 @@ window.CV = {
       texto:
         'El cliente escanea un QR en la carta y ve el plato en 3D, a tamaño real, sobre su mesa antes de pedirlo. ' +
         'Ideal para promocionar platos del día y aumentar el ticket.',
-      src: 'models/pizza-bigboss.glb',
-      alt: 'Pizza en 3D',
-      scale: '0.5 0.5 0.5',
-      orbit: '30deg 55deg auto',
       boton: 'Ver en mi mesa',
+      modelos: [
+        { nombre: 'Pizza', src: 'models/pizza-bigboss.glb', alt: 'Pizza en 3D', scale: '0.5 0.5 0.5', orbit: '30deg 55deg auto' },
+        { nombre: 'Torta de chocolate y frutillas', src: 'models/torta-frutillas.glb', alt: 'Torta de chocolate con frutillas en 3D', orbit: '30deg 60deg auto' },
+      ],
     },
     {
       id: 'muebles',
@@ -91,6 +91,39 @@ window.CV = {
       boton: 'Ver en mi casa',
     },
   ],
+
+  // Plan Socio de Mantenimiento (servicio para edificios y vecinos).
+  // precio: null muestra "Consultá el valor"; poné un texto (ej. '$ 990 por mes') para mostrarlo.
+  plan: {
+    nombre: 'Plan Socio de Mantenimiento',
+    publico: 'Para edificios, vecinos y comercios',
+    bajada:
+      'Una cuota mensual fija que cubre la mano de obra de los arreglos del día a día y las urgencias de tu casa. ' +
+      'Si sos socio, solo pagás los materiales.',
+    precio: null,
+    whatsappTexto: 'Hola Bruno, quiero información del Plan Socio de Mantenimiento.',
+    pasos: [
+      ['Te asociás', 'Pagás una cuota mensual fija, sin sorpresas.'],
+      ['Nos escribís', 'Cuando surge algo, mandás un WhatsApp con una foto del problema.'],
+      ['Lo resolvemos', 'Coordinamos la visita y hacemos el trabajo.'],
+      ['Pagás solo materiales', 'La mano de obra ya está cubierta por la cuota.'],
+    ],
+    incluye: [
+      ['plug-zap', 'Electricidad', 'Armar o cambiar enchufes y llaves de luz, colgar lámparas y apliques, revisar cortes.'],
+      ['droplet', 'Sanitaria', 'Arreglar canillas que gotean, cambiar flexibles, cisternas y destapes simples.'],
+      ['flame', 'Calefón', 'Instalación y recambio de calefón.'],
+      ['paint-roller', 'Pintura', 'Pequeños arreglos y retoques de pintura.'],
+      ['hammer', 'Armado y colocación', 'Armado de muebles, cortinas roller, estantes, cuadros y trabajos en madera.'],
+      ['wifi', 'Internet y WiFi', 'Configuración del router y el WiFi, mejorar la señal, conectar equipos.'],
+      ['cctv', 'Cámaras de seguridad', 'Colocación y configuración de cámaras para verlas desde el celular.'],
+      ['messages-square', 'Asesoramiento', 'Te decimos qué comprar y cuánto sale antes de hacer el trabajo.'],
+    ],
+    condiciones: [
+      'Mano de obra incluida en la cuota; los materiales los paga el socio.',
+      'Las urgencias de socios tienen prioridad.',
+      'Obras y reformas grandes se presupuestan aparte.',
+    ],
+  },
 
   proyectos: [
     {
@@ -212,6 +245,7 @@ window.CV = {
 
   creditos: [
     'Pizza "BigBoss" — ponomarovmax (Sketchfab), CC BY 4.0',
+    '"Strawberry Chocolate Cake" — Poly Haven, CC0',
     '"(FREE) Porsche 911 Carrera 4S" — Karol Miklas (Sketchfab), CC BY-SA 4.0',
     'Gorila low poly — iRahulRajput (Sketchfab), CC BY 4.0',
     '"RobotExpressive" — Tomás Laulhé, modificado por Don McCurdy, CC0',

@@ -274,7 +274,7 @@
 // Robots que asoman por detrás de un botón y saludan ("Robot Wave" de Irby Pace y
 // "AI bot" de Trình, LottieFiles). La librería se descarga solo si hace falta.
 function robotQueAsoma(caja, terminado) {
-  if (!caja || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!caja) return;
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_light.min.js';
   s.onload = async () => {

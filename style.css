@@ -110,7 +110,6 @@ p { margin: 0; }
   78%, 90%   { transform: translateY(-85.7143%); }
   96%, 100%  { transform: translateY(0); }
 }
-@media (prefers-reduced-motion: reduce) { .laptop-pantalla img { animation: none; } }
 .intro .laptop {
   position: relative; left: auto; top: auto; z-index: auto; transform: none;
   width: min(66%, 480px); margin: 0 auto 32px; opacity: 1;
@@ -236,7 +235,6 @@ body.con-intro { overflow: hidden; }
 .intro-cuerpo > p:not(.kicker) { color: var(--texto); font-size: 17px; font-weight: 480; line-height: 1.35; margin-top: 16px; }
 .intro-cuerpo strong { color: var(--texto); }
 .intro-acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 96px; }
-@media (prefers-reduced-motion: reduce) { .intro-acciones { margin-top: 32px; } }
 .intro-btn { min-height: 52px; padding: 0 24px; }
 @media (max-width: 480px) { .intro-btn, .asoma { width: 100%; } }
 
@@ -256,7 +254,6 @@ body.con-intro { overflow: hidden; }
 .asoma-ventana-izq { right: auto; left: 14px; width: 96px; }
 .asoma-robot-2 { top: 14px; left: -31px; width: 164px; height: 92px; transform: translateY(100%); }
 .asoma.saluda .asoma-robot-2 { transform: translateY(0); transition-delay: 0.5s; }
-@media (prefers-reduced-motion: reduce) { .asoma-ventana { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   .carrusel { overflow-x: auto; }
   .carrusel-pista { animation: none; }
@@ -421,7 +418,7 @@ body.con-intro { overflow: hidden; }
 @media (min-width: 960px) {
   .intro .laptop-pantalla img { transform: translateY(-14.2857%); }
 }
-@media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
+@media (min-width: 960px) {
   .intro .laptop-pantalla img { animation-name: recorrer-sin-inicio; animation-duration: 30s; }
 }
 @keyframes recorrer-sin-inicio {

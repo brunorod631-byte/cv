@@ -96,20 +96,9 @@
   mostrarDemo(inicial);
   if (location.hash.startsWith('#ra-')) $('ra').scrollIntoView();
 
-  // --- Intro con carrusel ---
+  // --- Intro ---
   // Se muestra al entrar por la dirección general. Si el QR trae un #sección, va directo.
   const intro = $('intro');
-  const items = cv.ra.flatMap((d) => (d.modelos || [d]).map((m, i) => ({ d, i, m })));
-  const poster = (src) => 'img/posters/' + src.split('/').pop().replace('.glb', '.webp');
-  function tarjetaCarrusel({ d, i, m }) {
-    const b = el('button', { class: 'carrusel-item', type: 'button' },
-      el('img', { src: poster(m.src), alt: '', width: '180', height: '180', decoding: 'async' }),
-      el('span', { text: m.nombre || d.rubro }));
-    b.addEventListener('click', () => { cerrarIntro(); mostrarDemo(d, i); $('ra').scrollIntoView(); });
-    return b;
-  }
-  // La pista lleva la lista dos veces para que la animación dé la vuelta sin salto.
-  for (let k = 0; k < 2; k++) for (const it of items) $('carrusel-a').append(tarjetaCarrusel(it));
   function cerrarIntro() {
     intro.classList.add('saliendo');
     document.body.classList.remove('con-intro');
@@ -124,7 +113,7 @@
     $('intro-iniciar').focus();
   }
   $('intro-iniciar').addEventListener('click', cerrarIntro);
-  $('intro-plan').addEventListener('click', () => { cerrarIntro(); $('mantenimiento').scrollIntoView(); });
+  if (!intro.hidden) robotQueAsoma($('asoma-intro'), () => intro.hidden);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
 
   visor.addEventListener('progress', (e) => {
@@ -270,3 +259,55 @@
 
   $('anio').textContent = new Date().getFullYear();
 })();
+
+// Barra de navegación: transparente arriba, esmerilada al hacer scroll
+(() => {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+  const actualizar = () => nav.classList.toggle('con-fondo', window.scrollY > 8);
+  window.addEventListener('scroll', actualizar, { passive: true });
+  window.addEventListener('load', actualizar);
+  window.addEventListener('hashchange', actualizar);
+  actualizar();
+})();
+
+// Robots que asoman por detrás de un botón y saludan ("Robot Wave" de Irby Pace y
+// "AI bot" de Trình, LottieFiles). La librería se descarga solo si hace falta.
+function robotQueAsoma(caja, terminado) {
+  if (!caja || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_light.min.js';
+  s.onload = async () => {
+    const cargar = async (el) => {
+      const url = el.dataset.anim;
+      const datos = await (await fetch(url)).json();
+      const anim = window.lottie.loadAnimation({
+        container: el, renderer: 'svg', loop: true, autoplay: false,
+        animationData: datos, assetsPath: url.slice(0, url.lastIndexOf('/') + 1),
+      });
+      await new Promise((ok) => anim.addEventListener('DOMLoaded', ok));
+      return anim;
+    };
+    let anims;
+    try { anims = await Promise.all([...caja.querySelectorAll('.asoma-robot[data-anim]')].map(cargar)); } catch { return; }
+    let arriba = false, bajar;
+    const asomar = () => {
+      if (arriba || terminado()) return;
+      arriba = true;
+      anims.forEach((a) => a.goToAndPlay(0, true));
+      caja.classList.add('saluda');
+      bajar = setTimeout(esconder, 5200); // dos saludos
+    };
+    const esconder = () => {
+      clearTimeout(bajar);
+      caja.classList.remove('saluda');
+      setTimeout(() => { arriba = false; if (!caja.classList.contains('saluda')) anims.forEach((a) => a.pause()); }, 500);
+    };
+    caja.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') asomar(); });
+    setTimeout(asomar, 1000);
+    const ciclo = setInterval(() => {
+      if (terminado()) { clearInterval(ciclo); anims.forEach((a) => a.destroy()); } else asomar();
+    }, 9000);
+  };
+  document.head.append(s);
+}

@@ -291,5 +291,7 @@ window.CV = {
     '"Glam Velvet Sofa" — Eric Chadwick / Wayfair (Khronos glTF Sample Assets), CC BY 4.0',
     '"Sheen Chair" — Eric Chadwick / Wayfair (Khronos glTF Sample Assets), CC0',
     '"Wooden Table 02" y "Painted Wooden Nightstand" — Poly Haven, CC0',
+    'Animación "Robot Wave" — Irby Pace (LottieFiles), Lottie Simple License · recortada y optimizada',
+    'Animación "AI bot" — Trình (LottieFiles), Lottie Simple License · optimizada',
   ],
 };

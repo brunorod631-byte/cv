@@ -416,3 +416,20 @@ body.con-intro { overflow: hidden; }
 /* Portada: la laptop de fondo no compite con el título */
 .hero .laptop { opacity: 0.22; }
 .hero .laptop-pantalla img { filter: blur(3px); }
+
+/* PC: en la bienvenida la laptop no repite la bienvenida; recorre solo las otras 6 secciones */
+@media (min-width: 960px) {
+  .intro .laptop-pantalla img { transform: translateY(-14.2857%); }
+}
+@media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
+  .intro .laptop-pantalla img { animation-name: recorrer-sin-inicio; animation-duration: 30s; }
+}
+@keyframes recorrer-sin-inicio {
+  0%, 11%   { transform: translateY(-14.2857%); }
+  15%, 26%  { transform: translateY(-28.5714%); }
+  30%, 41%  { transform: translateY(-42.8571%); }
+  45%, 56%  { transform: translateY(-57.1429%); }
+  60%, 71%  { transform: translateY(-71.4286%); }
+  75%, 90%  { transform: translateY(-85.7143%); }
+  96%, 100% { transform: translateY(-14.2857%); }
+}

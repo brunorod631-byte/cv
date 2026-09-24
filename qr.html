@@ -5,18 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QR para imprimir · Bruno Rodríguez</title>
   <meta name="robots" content="noindex" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/icon.svg?v=2" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <style>
-    body { margin: 0; padding: 24px 16px; background: #eceff3; font-family: Inter, system-ui, sans-serif; color: #111; }
-    .hoja { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
-    .tarjeta { width: 320px; max-width: 100%; background: #fff; border-radius: 16px; padding: 24px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-    .tarjeta img { width: 220px; height: 220px; margin: 16px auto; display: block; image-rendering: pixelated; }
-    .kicker { color: #b3700a; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin: 0; }
-    h1 { font-size: 24px; margin: 6px 0 0; }
-    p { margin: 0; color: #444; font-size: 14px; }
-    .url { font-size: 12px; color: #777; margin-top: 8px; word-break: break-all; }
-    .ayuda { text-align: center; color: #555; font-size: 14px; margin-top: 24px; }
-    @media print { body { background: #fff; padding: 0; } .tarjeta { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; } .ayuda { display: none; } }
+    /* Estilo Mercury: fondo onyx, tarjetas grafito, QR sobre placa marfil y una sola píldora cobalto por tarjeta. */
+    :root {
+      --fondo: #171721; --panel: #1e1e2a; --suave: #c3c3cc; --texto: #ededf3; --acento: #5266eb;
+      --titulos: Archivo, Inter, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 32px 16px; background: var(--fondo); color: var(--texto); font: 400 16px/1.5 Inter, system-ui, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    p { margin: 0; }
+    .hoja { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+    .tarjeta { width: 340px; max-width: 100%; background: var(--panel); border-radius: 12px; padding: 32px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .kicker { color: var(--suave); font-size: 12px; font-weight: 480; letter-spacing: 0.01em; }
+    h1 { margin: 8px 0 0; font-family: var(--titulos); font-stretch: 112%; font-weight: 480; font-size: 24px; line-height: 1.2; letter-spacing: 0.02em; }
+    .desc { margin-top: 8px; color: var(--suave); font-size: 14px; line-height: 1.45; }
+    .desc strong { color: var(--texto); font-weight: 480; }
+    .placa { margin: 24px auto 20px; background: var(--texto); padding: 14px; border-radius: 12px; }
+    .placa img { width: 196px; height: 196px; display: block; }
+    .pildora { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 20px; border-radius: 24px; line-height: 1.3; text-align: center; white-space: nowrap; background: var(--acento); color: #fff; font-size: 14px; }
+    .url { font-size: 12px; color: var(--suave); margin-top: 12px; word-break: break-all; }
+    .ayuda { text-align: center; color: var(--suave); font-size: 14px; margin-top: 32px; }
+    @media print {
+      body { padding: 0; }
+      .tarjeta { break-inside: avoid; outline: 1px dashed #70707d; }
+      .ayuda { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -24,44 +42,44 @@
     <div class="tarjeta">
       <p class="kicker">Currículum digital</p>
       <h1>Bruno Rodríguez</h1>
-      <p>Apps, bots, web y Realidad Aumentada</p>
-      <img src="assets/qr-cv.svg" alt="QR al CV digital" />
-      <p>Escaneá con la cámara del celular</p>
+      <p class="desc">Apps, bots, tiendas online y Realidad Aumentada</p>
+      <div class="placa"><img src="assets/qr-web.svg" alt="QR a brunorod.uy" /></div>
+      <span class="pildora">Escaneá con la cámara del celular</span>
       <p class="url">brunorod.uy</p>
     </div>
     <div class="tarjeta">
       <p class="kicker">Probalo en tu mesa</p>
       <h1>Tu menú en 3D</h1>
-      <p>Mirá el plato sobre la mesa antes de pedirlo</p>
-      <img src="assets/qr-restaurantes.svg" alt="QR a la demo de Realidad Aumentada para restaurantes" />
-      <p>Escaneá y tocá «Ver en mi mesa»</p>
+      <p class="desc">Mirá el plato sobre la mesa antes de pedirlo</p>
+      <div class="placa"><img src="assets/qr-ra-restaurantes.svg" alt="QR a la demo de Realidad Aumentada para restaurantes" /></div>
+      <span class="pildora">Escaneá y tocá «Ver en mi mesa»</span>
       <p class="url">brunorod.uy/#ra-restaurantes</p>
     </div>
     <div class="tarjeta">
       <p class="kicker">Probalo en tu casa</p>
       <h1>El mueble, a tamaño real</h1>
-      <p>Mirá si entra en tu living antes de comprarlo</p>
-      <img src="assets/qr-muebles.svg" alt="QR a la demo de Realidad Aumentada para mueblerías e inmobiliarias" />
-      <p>Escaneá y tocá «Ver en mi living»</p>
+      <p class="desc">Mirá si entra en tu living antes de comprarlo</p>
+      <div class="placa"><img src="assets/qr-ra-muebles.svg" alt="QR a la demo de Realidad Aumentada para mueblerías e inmobiliarias" /></div>
+      <span class="pildora">Escaneá y tocá «Ver en mi living»</span>
       <p class="url">brunorod.uy/#ra-muebles</p>
     </div>
     <div class="tarjeta">
       <p class="kicker">Para tu edificio</p>
       <h1>Plan Socio de Mantenimiento</h1>
-      <p>Electricidad, sanitaria, calefón, armado de muebles, WiFi y cámaras por <strong>$ 650 por mes</strong>. Solo pagás materiales.</p>
-      <img src="assets/qr-mantenimiento.svg" alt="QR al Plan Socio de Mantenimiento" />
-      <p>Escaneá y mirá qué incluye</p>
+      <p class="desc">Electricidad, sanitaria, calefón, armado de muebles, WiFi y cámaras por <strong>$ 650 por mes</strong>. Solo pagás materiales.</p>
+      <div class="placa"><img src="assets/qr-socio.svg" alt="QR al Plan Socio de Mantenimiento" /></div>
+      <span class="pildora">Escaneá y mirá qué incluye</span>
       <p class="url">brunorod.uy/#mantenimiento</p>
     </div>
     <div class="tarjeta">
       <p class="kicker">Probalo en tu casa</p>
       <h1>Electrodomésticos en 3D</h1>
-      <p>Mirá si la heladera, el lavarropas o el aire entran en tu casa antes de comprarlos</p>
-      <img src="assets/qr-electrodomesticos.svg" alt="QR a la demo de Realidad Aumentada de electrodomésticos" />
-      <p>Escaneá y tocá «Ver en mi casa»</p>
+      <p class="desc">Mirá si la heladera, el lavarropas o el aire entran en tu casa antes de comprarlos</p>
+      <div class="placa"><img src="assets/qr-ra-electrodomesticos.svg" alt="QR a la demo de Realidad Aumentada de electrodomésticos" /></div>
+      <span class="pildora">Escaneá y tocá «Ver en mi casa»</span>
       <p class="url">brunorod.uy/#ra-electrodomesticos</p>
     </div>
   </div>
-  <p class="ayuda">Imprimí esta página (Ctrl+P). Cada QR queda en una tarjeta para recortar.</p>
+  <p class="ayuda">Imprimí esta página (Ctrl+P, con «Gráficos de fondo» activado). Cada QR queda en una tarjeta para recortar.</p>
 </body>
 </html>

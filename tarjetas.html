@@ -5,63 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tarjetas para imprimir · Bruno Rodríguez</title>
   <meta name="robots" content="noindex" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/icon.svg?v=2" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <style>
-    /* Hoja A4 con 10 tarjetas de 85 × 55 mm (2 columnas × 5 filas). ?tipo=socio muestra la del Plan Socio. */
+    /* Hoja A4 con 10 tarjetas de 85,6 × 54 mm (tamaño tarjeta de crédito, 2 columnas × 5 filas), estilo Mercury.
+       ?tipo=socio muestra la del Plan Socio. */
     @page { size: A4; margin: 0; }
+    :root {
+      --fondo: #171721; --panel: #1e1e2a; --suave: #c3c3cc; --texto: #ededf3; --acento: #5266eb;
+      --titulos: Archivo, Inter, Arial, sans-serif;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e5e8ec; font-family: Inter, Arial, sans-serif; color: #111; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .barra { max-width: 210mm; margin: 16px auto; padding: 0 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
-    .barra a { padding: 8px 14px; border-radius: 8px; background: #fff; color: #111; text-decoration: none; font-weight: 600; border: 1px solid #ccd; }
-    .barra a.on { background: #111; color: #fff; }
+    body { margin: 0; background: #d9dde2; font-family: Inter, Arial, sans-serif; color: var(--texto); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    p { margin: 0; }
+    .barra { max-width: 210mm; margin: 16px auto; padding: 0 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; color: #222; }
+    .barra a { padding: 8px 14px; border-radius: 32px; background: #fff; color: #111; text-decoration: none; font-weight: 500; border: 1px solid #ccd; }
+    .barra a.on { background: #171721; color: #ededf3; border-color: #171721; }
     .hoja {
       width: 210mm; height: 297mm; margin: 0 auto 24px; background: #fff;
-      padding: 11mm 20mm; display: grid; grid-template-columns: repeat(2, 85mm); grid-auto-rows: 55mm;
+      display: grid; grid-template-columns: repeat(2, 85.6mm); grid-auto-rows: 54mm;
       justify-content: center; align-content: center; gap: 0;
     }
     .tarjeta {
-      position: relative; width: 85mm; height: 55mm; overflow: hidden;
-      display: grid; grid-template-columns: 1fr 30mm; gap: 3mm; padding: 5mm 5mm 5mm 6mm;
-      outline: 0.2mm dashed #c4c8ce; outline-offset: -0.1mm;
+      position: relative; width: 85.6mm; height: 54mm; overflow: hidden;
+      background: radial-gradient(70% 90% at 88% 0%, #2c2c40 0%, rgba(23, 23, 33, 0) 70%), var(--fondo);
+      outline: 0.2mm dashed #9aa0a8; outline-offset: -0.1mm;
     }
-    .tarjeta::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1.6mm; background: #f5a524; }
-    .texto { display: flex; flex-direction: column; min-width: 0; }
-    .kicker { font-size: 6.2pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #b3700a; margin: 0; }
-    h1 { font-size: 13pt; line-height: 1.1; margin: 1mm 0 0; font-weight: 800; letter-spacing: -0.01em; }
-    .rol { font-size: 7.4pt; line-height: 1.3; margin: 1.2mm 0 0; color: #333; }
-    .precio { font-size: 12pt; font-weight: 800; margin: 1.5mm 0 0; }
-    .precio small { font-size: 7pt; font-weight: 600; color: #555; }
-    .contacto { margin-top: auto; font-size: 7.2pt; line-height: 1.45; color: #111; }
-    .contacto b { font-weight: 600; }
-    .qr { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-    .qr img { width: 28mm; height: 28mm; display: block; }
-    .qr span { font-size: 6pt; line-height: 1.2; margin-top: 1mm; color: #333; font-weight: 600; }
+    .texto { position: absolute; left: 5.5mm; top: 5mm; bottom: 5mm; width: 43mm; display: flex; flex-direction: column; }
+    .kicker { font-size: 5.4pt; font-weight: 480; letter-spacing: 0.01em; color: var(--suave); }
+    h1 { margin: 1.4mm 0 0; font-family: var(--titulos); font-stretch: 112%; font-weight: 480; font-size: 11pt; line-height: 1.1; letter-spacing: 0.015em; }
+    .rol { margin-top: 1.6mm; font-size: 6pt; line-height: 1.35; color: var(--suave); }
+    .precio { margin-top: 1.8mm; font-family: var(--titulos); font-stretch: 112%; font-weight: 480; font-size: 11pt; letter-spacing: 0.015em; }
+    .precio small { font-family: Inter, Arial, sans-serif; font-size: 6pt; color: var(--suave); }
+    .contacto { margin-top: auto; font-size: 6.4pt; line-height: 1.45; }
+    .contacto b { font-weight: 480; color: var(--suave); }
+    .qr { position: absolute; top: 0; right: 0; bottom: 0; width: 33mm; background: var(--panel); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.4mm; }
+    .qr .placa { background: var(--texto); padding: 1.8mm; border-radius: 2mm; }
+    .qr img { width: 19mm; height: 19mm; display: block; }
+    .pildora { display: inline-flex; align-items: center; height: 4.4mm; padding: 0 1.8mm; border-radius: 3mm; background: var(--acento); color: #fff; font-size: 4.8pt; font-weight: 480; white-space: nowrap; }
     @media print { body { background: #fff; } .barra { display: none; } .hoja { margin: 0; } }
-    @media screen and (max-width: 840px) { .hoja { transform-origin: top left; } }
   </style>
 </head>
 <body>
   <div class="barra">
     <a href="?tipo=cv" id="l-cv">Tarjeta general</a>
     <a href="?tipo=socio" id="l-socio">Tarjeta Plan Socio</a>
-    <span>Imprimí con Ctrl+P, tamaño A4, márgenes «Ninguno», escala 100 %.</span>
+    <span>Imprimí con Ctrl+P, tamaño A4, márgenes «Ninguno», escala 100 % y «Gráficos de fondo» activado.</span>
   </div>
   <div class="hoja" id="hoja"></div>
 
   <template id="t-cv">
     <div class="tarjeta">
       <div class="texto">
-        <p class="kicker">Desarrollador · Uruguay</p>
+        <p class="kicker">Desarrollador freelance · Uruguay</p>
         <h1>Bruno Rodríguez</h1>
-        <p class="rol">Apps, bots, páginas web y Realidad Aumentada para tu negocio.</p>
-        <div class="contacto">
-          <b>WhatsApp</b> 098 611 824<br />
-          bruno@brunorod.uy
-        </div>
+        <p class="rol">Apps, bots, tiendas online y Realidad Aumentada para tu negocio.</p>
+        <p class="contacto"><b>WhatsApp</b> 098 611 824<br />bruno@brunorod.uy</p>
       </div>
       <div class="qr">
-        <img src="assets/qr-cv.svg" alt="QR a la página" />
-        <span>Escaneá y mirá<br />mi trabajo</span>
+        <div class="placa"><img src="assets/qr-web.svg" alt="QR a brunorod.uy" /></div>
+        <span class="pildora">Escaneá y mirá mi trabajo</span>
       </div>
     </div>
   </template>
@@ -73,11 +79,11 @@
         <h1>Plan Socio de Mantenimiento</h1>
         <p class="rol">Electricidad, sanitaria, calefón, armado de muebles, WiFi y cámaras. Solo pagás los materiales.</p>
         <p class="precio">$ 650 <small>por mes</small></p>
-        <div class="contacto"><b>Bruno Rodríguez</b> · 098 611 824</div>
+        <p class="contacto"><b>Bruno Rodríguez</b> · 098 611 824</p>
       </div>
       <div class="qr">
-        <img src="assets/qr-mantenimiento.svg" alt="QR al Plan Socio" />
-        <span>Escaneá y mirá<br />qué incluye</span>
+        <div class="placa"><img src="assets/qr-socio.svg" alt="QR al Plan Socio" /></div>
+        <span class="pildora">Escaneá y mirá qué incluye</span>
       </div>
     </div>
   </template>

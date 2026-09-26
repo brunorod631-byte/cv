@@ -242,7 +242,7 @@ window.CV = {
       [10, 'feat: método de pago y comprobante al confirmar pago de factura', '2026-08-28', 268, 26, 7],
       [1, 'feat: elegir empresa de proveedor por botón y depurar catálogo', '2026-08-27', 576, 45, 7],
     ],
-    PambaUy: [
+    'App de mensajería': [
       [2, 'Fase 3.5 (app): grabar y ver estados de video', '2026-09-10', 472, 67, 15],
       [1, 'Fase 3.5 (backend): video en estados con ffmpeg', '2026-09-10', 730, 55, 16],
     ],
@@ -252,7 +252,7 @@ window.CV = {
     { src: 'img/prs/camlibre-14-wifi-bluetooth.webp', texto: 'CamLibre #14 — Protocolo WiFi por Bluetooth reconstruido por ingeniería inversa' },
     { src: 'img/prs/bot-ferreteria-36-libreta-credito.webp', texto: 'Bot ferretería #36 — Libreta de crédito (fiado) en Telegram, con tests' },
     { src: 'img/prs/camlibre-8-rediseno.webp', texto: 'CamLibre #8 — Rediseño completo de la interfaz' },
-    { src: 'img/prs/pambauy-1-video-ffmpeg.webp', texto: 'PambaUy #1 — Video en estados, borrando los datos GPS con ffmpeg' },
+    { src: 'img/prs/pambauy-1-video-ffmpeg.webp', texto: 'App de mensajería #1 — Video en estados, borrando los datos GPS con ffmpeg' },
   ],
 
   trayectoria: [

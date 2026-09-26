@@ -4,7 +4,7 @@ import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/
 import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js/+esm';
 
 // seguir(): mientras devuelva true se sigue dibujando; al cerrarse la bienvenida se libera todo
-export function iniciarSillon(contenedor, etapa, seguir) {
+export function iniciarSillon(contenedor, seguir) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -207,9 +207,6 @@ export function iniciarSillon(contenedor, etapa, seguir) {
     anillo.position.y = altura;
     anillo.material.opacity = Math.min(1, Math.sin(Math.PI * nv) * 1.8);
     anillo.visible = nv > 0 && nv < 1;
-
-    const texto = abierto > 0.5 ? 'Cada pieza, en 3D' : nv > 0.5 ? 'Así lo recibe tu cliente' : 'Modelo 3D';
-    if (etapa.textContent !== texto) etapa.textContent = texto;
 
     renderer.render(scene, camara);
     requestAnimationFrame(animar);

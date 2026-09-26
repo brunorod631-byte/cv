@@ -174,7 +174,7 @@ window.CV = {
       stack: ['model-viewer', 'three.js', 'WebXR'],
     },
     {
-      nombre: 'PambaUy',
+      nombre: 'App de mensajería segura y privada',
       etiqueta: 'App móvil + backend',
       texto:
         'Comunidad privada por invitación: mensajería en tiempo real, historias que se borran a las 24 h, ' +

@@ -116,11 +116,18 @@ p { margin: 0; }
   78%, 90%   { transform: translateY(-85.7143%); }
   96%, 100%  { transform: translateY(0); }
 }
-.intro .laptop {
-  position: relative; left: auto; top: auto; z-index: auto; transform: none;
-  width: min(66%, 480px); margin: 0 auto 32px; opacity: 1;
-  -webkit-mask-image: none; mask-image: none;
+/* Bienvenida: sillón 3D que gira, se desarma y se vuelve a armar (sillon3d.js) */
+.sillon3d { position: relative; width: min(100%, 440px); aspect-ratio: 4 / 3; margin: 0 auto 24px; }
+.sillon3d canvas { display: block; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity 0.6s ease; }
+.sillon3d.listo canvas { opacity: 1; }
+.sillon3d-etapa {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  color: var(--suave); font-size: 12px; font-weight: 480; letter-spacing: 0.08em; text-transform: uppercase;
+  opacity: 0; transition: opacity 0.6s ease;
 }
+.sillon3d-etapa::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--acento); box-shadow: 0 0 10px var(--acento); }
+.sillon3d.listo .sillon3d-etapa { opacity: 1; }
 
 @media (max-width: 700px) {
   .laptop { top: 0; transform: translate(-50%, 8px); opacity: 0.2; }
@@ -402,15 +409,15 @@ body.con-intro { overflow: hidden; }
   .plan-cab .btn { width: auto; }
 }
 
-/* PC: texto a la izquierda, laptop a la derecha */
+/* PC: texto a la izquierda, sillón a la derecha */
 @media (min-width: 960px) {
   .intro-cuerpo {
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
     grid-template-rows: auto auto auto auto; align-content: center;
     column-gap: 64px; max-width: 1200px; padding: 32px 40px 48px; text-align: left;
   }
-  .intro-cuerpo > :not(.laptop) { grid-column: 1; }
-  .intro .laptop { grid-column: 2; grid-row: 1 / span 4; align-self: center; width: 100%; margin: 0; }
+  .intro-cuerpo > :not(.sillon3d) { grid-column: 1; }
+  .intro .sillon3d { grid-column: 2; grid-row: 1 / span 4; align-self: center; width: 100%; margin: 0; }
   .intro-cuerpo h1 { font-size: clamp(40px, 4.2vw, 58px); }
   .intro-acciones { justify-content: flex-start; }
   .intro-acciones .asoma .intro-btn { min-width: 320px; }
@@ -419,20 +426,3 @@ body.con-intro { overflow: hidden; }
 /* Portada: la laptop de fondo no compite con el título */
 .hero .laptop { opacity: 0.22; }
 .hero .laptop-pantalla img { filter: blur(3px); }
-
-/* PC: en la bienvenida la laptop no repite la bienvenida; recorre solo las otras 6 secciones */
-@media (min-width: 960px) {
-  .intro .laptop-pantalla img { transform: translateY(-14.2857%); }
-}
-@media (min-width: 960px) {
-  .intro .laptop-pantalla img { animation-name: recorrer-sin-inicio; animation-duration: 30s; }
-}
-@keyframes recorrer-sin-inicio {
-  0%, 11%   { transform: translateY(-14.2857%); }
-  15%, 26%  { transform: translateY(-28.5714%); }
-  30%, 41%  { transform: translateY(-42.8571%); }
-  45%, 56%  { transform: translateY(-57.1429%); }
-  60%, 71%  { transform: translateY(-71.4286%); }
-  75%, 90%  { transform: translateY(-85.7143%); }
-  96%, 100% { transform: translateY(-14.2857%); }
-}

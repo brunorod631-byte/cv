@@ -114,6 +114,13 @@
   }
   $('intro-iniciar').addEventListener('click', cerrarIntro);
   if (!intro.hidden) robotQueAsoma($('asoma-intro'), () => intro.hidden);
+  if (!intro.hidden) {
+    // El 3D se descarga solo si se ve la bienvenida; si falla (sin WebGL) queda el texto solo
+    const sillon = $('sillon-intro');
+    import('./sillon3d.js?v=1')
+      .then((m) => m.iniciarSillon(sillon, $('sillon-etapa'), () => !intro.hidden))
+      .catch(() => { sillon.hidden = true; });
+  }
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
 
   visor.addEventListener('progress', (e) => {

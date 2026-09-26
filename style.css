@@ -151,6 +151,11 @@ p { margin: 0; }
 
 /* Secciones */
 .seccion { padding-top: 72px; padding-bottom: 0; }
+/* Robot que cruza la pantalla entre la portada y Realidad Aumentada (robotpaseo.js) */
+#ra { position: relative; }
+.paseo { position: absolute; top: -72px; left: calc(50% - 50vw); width: 100vw; height: 144px; pointer-events: none; }
+.paseo canvas { display: block; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity 0.6s ease; }
+.paseo.listo canvas { opacity: 1; }
 .seccion-cab { margin-bottom: 32px; }
 .seccion h2 { font-size: clamp(28px, 6.5vw, 42px); font-weight: 480; letter-spacing: 0.01em; }
 .bajada { color: var(--suave); max-width: 640px; margin-top: 16px; font-size: 18px; line-height: 1.5; }

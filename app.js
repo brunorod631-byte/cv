@@ -123,6 +123,19 @@
   }
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
 
+  // Robot que cruza la pantalla arriba de Realidad Aumentada: se carga al acercarse y solo se mueve a la vista
+  const paseo = $('paseo');
+  let paseoVisible = false;
+  new IntersectionObserver(([e]) => {
+    paseoVisible = e.isIntersecting;
+    if (paseoVisible && !paseo.dataset.cargado) {
+      paseo.dataset.cargado = '1';
+      import('./robotpaseo.js?v=1')
+        .then((m) => m.iniciarPaseo(paseo, () => paseoVisible && intro.hidden))
+        .catch(() => { paseo.hidden = true; });
+    }
+  }, { rootMargin: '300px' }).observe(paseo);
+
   visor.addEventListener('progress', (e) => {
     const p = e.detail.totalProgress;
     $('progreso').style.width = p * 100 + '%';

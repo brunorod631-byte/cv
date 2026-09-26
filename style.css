@@ -51,7 +51,21 @@ p { margin: 0; }
   background: transparent; color: var(--texto);
   border: 1px solid var(--texto); box-shadow: inset 0 0 0 4px var(--fondo), inset 0 0 0 5px rgba(237, 237, 243, 0.35);
   font-weight: 530; text-decoration: none; font-size: 14px;
+  position: relative; isolation: isolate;
+  transition: text-shadow 0.3s ease;
 }
+/* Logo animado: una luz cobalto da la vuelta al anillo */
+.nav-brand::before {
+  content: ''; position: absolute; inset: -1px; border-radius: 50%; z-index: -1;
+  background: conic-gradient(from 0deg, transparent 0 62%, rgba(82, 102, 235, 0.5) 80%, #8f9bff 93%, #fff 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1.5px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1.5px));
+  filter: drop-shadow(0 0 3px rgba(82, 102, 235, 0.9));
+  animation: br-orbita 4s linear infinite;
+}
+.nav-brand:hover::before { animation-duration: 1.4s; }
+.nav-brand:hover { text-shadow: 0 0 10px rgba(143, 155, 255, 0.9); }
+@keyframes br-orbita { to { transform: rotate(360deg); } }
 .nav-links { flex: 1; min-width: 0; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
 .nav-cta { flex: none; min-height: 40px; padding: 0 20px; font-size: 14px; }
 .nav-links::-webkit-scrollbar { display: none; }
@@ -375,6 +389,8 @@ body.con-intro { overflow: hidden; }
 .form-estado.ok { color: var(--texto); }
 .form-estado.error { color: var(--texto); font-weight: 480; }
 .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* Verificación anti-robots de Cloudflare (Turnstile) */
+.turnstile { min-height: 65px; }
 
 /* Botón flotante de WhatsApp */
 .wa-flotante {

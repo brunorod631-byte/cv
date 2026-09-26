@@ -272,6 +272,22 @@
   const form = $('form-contacto');
   const inicioForm = Date.now();
   const estado = (texto, tipo) => { $('form-estado').textContent = texto; $('form-estado').className = 'form-estado ' + (tipo || ''); };
+
+  // Verificación anti-robots de Cloudflare (Turnstile): se carga al acercarse al formulario
+  let widgetTurnstile = null;
+  window.alCargarTurnstile = () => {
+    widgetTurnstile = window.turnstile.render('#turnstile', {
+      sitekey: '0x4AAAAAAFD7TwWAT_sc5wRe', theme: 'dark', language: 'es',
+    });
+  };
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    const s = document.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=alCargarTurnstile';
+    s.async = true;
+    document.head.append(s);
+  }, { rootMargin: '400px' }).observe(form);
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const datos = Object.fromEntries(new FormData(form));
@@ -280,11 +296,16 @@
       return;
     }
     datos.t = Date.now() - inicioForm;
+    if (widgetTurnstile !== null) {
+      datos.token = window.turnstile.getResponse(widgetTurnstile);
+      if (!datos.token) { estado('Esperá un segundo a que se complete la verificación de abajo.', 'error'); return; }
+    }
     const boton = form.querySelector('button');
     boton.disabled = true;
     estado('Enviando…');
     try {
       const r = await fetch('/api/contacto', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(datos) });
+      if (r.status === 403) { estado('No pudimos verificar que no seas un robot. Probá de nuevo en unos segundos.', 'error'); return; }
       if (!r.ok) throw new Error(r.status);
       form.reset();
       estado('¡Listo! Recibí tu mensaje, te respondo a la brevedad.', 'ok');
@@ -292,6 +313,8 @@
       estado('No se pudo enviar. Probá de nuevo o escribime por WhatsApp.', 'error');
     } finally {
       boton.disabled = false;
+      // Cada verificación sirve para un solo envío
+      if (widgetTurnstile !== null) window.turnstile.reset(widgetTurnstile);
     }
   });
 

@@ -25,11 +25,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=49" />
+  <link rel="stylesheet" href="style.css?v=50" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" defer></script>
   <script src="data.js?v=51" defer></script>
-  <script src="app.js?v=50" defer></script>
+  <script src="app.js?v=51" defer></script>
 </head>
 <body>
   <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-titulo" hidden>
@@ -204,6 +204,7 @@
         <label class="trampa" aria-hidden="true">No completar
           <input name="sitio_web" type="text" tabindex="-1" autocomplete="off" />
         </label>
+        <div class="turnstile" id="turnstile"></div>
         <button class="btn btn-primario" type="submit">Enviar mensaje</button>
         <p class="form-estado" id="form-estado" role="status"></p>
       </form>

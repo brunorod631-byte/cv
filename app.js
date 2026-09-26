@@ -123,6 +123,24 @@
   }
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
 
+  // --- Link siempre limpio: brunorod.uy, sin ?v=, ?fbclid= ni #sección en la barra ---
+  // Primero se usa lo que trae el link (el QR con #ra-restaurantes abre esa demo) y después se borra.
+  const destino = location.hash.slice(1);
+  if (location.search || location.hash) history.replaceState(null, '', location.pathname);
+  const irA = (id) => {
+    if (id === 'inicio') { scrollTo({ top: 0 }); return; }
+    const seccion = $(id.startsWith('ra-') ? 'ra' : id);
+    if (seccion) seccion.scrollIntoView();
+  };
+  if (destino) requestAnimationFrame(() => irA(destino));
+  // Los links del menú bajan a la sección sin agregar #algo a la dirección
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href').length < 2) return;
+    e.preventDefault();
+    irA(a.getAttribute('href').slice(1));
+  });
+
   // Robot que cruza la pantalla arriba de Realidad Aumentada: se carga al acercarse y solo se mueve a la vista
   const paseo = $('paseo');
   let paseoVisible = false;
